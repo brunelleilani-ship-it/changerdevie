@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nos Experts — ChangerDeVie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --sand: #D4BFA0; --sand-lt: #EDE3D4; --cream: #F7F3EE; --warm-white: #FDFAF6; --stone: #9C8670; --charcoal: #3A3028; --text: #4A3F35; --muted: #8C7B6E; }
+  body { background: var(--warm-white); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; }
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(253,250,246,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(212,191,160,0.3); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.08em; color: var(--charcoal); text-decoration: none; }
+  .nav-logo span { color: var(--stone); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-link { font-size: 0.78rem; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; }
+  .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; border-bottom: 1px solid var(--sand); padding-bottom: 2px; }
+
+  .page-hero { padding: 10rem 2rem 5rem; text-align: center; background: linear-gradient(160deg, var(--warm-white) 60%, var(--sand-lt) 100%); }
+  .eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); display: block; margin-bottom: 0.8rem; }
+  .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; color: var(--charcoal); }
+  .page-hero h1 em { font-style: italic; color: var(--stone); }
+  .page-hero p { max-width: 560px; margin: 1.5rem auto 0; color: var(--muted); font-size: 0.95rem; line-height: 1.85; }
+
+  .experts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; max-width: 1100px; margin: 4rem auto; padding: 0 2rem; }
+  .expert-card { background: var(--cream); padding: 0; overflow: hidden; }
+  .expert-photo { width: 100%; height: 200px; background: var(--sand-lt); display: flex; align-items: center; justify-content: center; position: relative; }
+  .expert-photo-placeholder { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
+  .expert-info { padding: 1.8rem; }
+  .expert-domain { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.3rem; }
+  .expert-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.2rem; }
+  .expert-rating { font-size: 0.8rem; color: var(--sand); letter-spacing: 0.05em; margin-bottom: 1rem; }
+  .expert-bio { font-size: 0.88rem; color: var(--muted); line-height: 1.8; }
+
+  .cta-block { text-align: center; padding: 4rem 2rem 6rem; }
+  .cta-block p { max-width: 520px; margin: 0 auto 2rem; color: var(--muted); font-size: 0.95rem; line-height: 1.85; }
+  .btn-primary { display: inline-block; padding: 1rem 2.4rem; background: var(--charcoal); color: var(--warm-white); font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: background 0.25s; }
+  .btn-primary:hover { background: var(--stone); }
+
+  footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(212,191,160,0.3); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--muted); }
+  .footer-link { font-size: 0.72rem; color: var(--muted); text-decoration: none; }
+  @media(max-width:768px){ nav{padding:1rem 1.4rem} .nav-link{display:none} .experts-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Changer<span>de</span>Vie</a>
+  <div class="nav-links">
+    <a href="qui-sommes-nous.html" class="nav-link">Qui sommes-nous</a>
+    <a href="nos-valeurs.html" class="nav-link">Nos valeurs</a>
+    <a href="avis-clients.html" class="nav-link">Avis clients</a>
+    <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="nav-cta">Appel gratuit →</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <span class="eyebrow">Notre réseau</span>
+  <h1>Des experts <em>triés sur le volet</em></h1>
+  <p>Voici un aperçu de quelques-uns des professionnels que nous avons sélectionnés. Ce n'est qu'une partie de l'équipe que nous mettons en place pour vous aider — ce qui compte, c'est que leurs compétences et qualités humaines correspondent à votre besoin, votre profil et votre personnalité.</p>
+</section>
+
+<div class="experts-grid">
+  <div class="expert-card">
+    <div class="expert-photo"><span class="expert-photo-placeholder">Photo à venir</span></div>
+    <div class="expert-info">
+      <p class="expert-domain">Psychologie · Burn-out</p>
+      <h3 class="expert-name">Dr. Claire Fontaine</h3>
+      <p class="expert-rating">★★★★★ &nbsp;4.9/5</p>
+      <p class="expert-bio">Psychologue clinicienne spécialisée dans l'épuisement professionnel et les transitions de vie. 12 ans d'expérience, approche intégrative alliant TCC et thérapie narrative. Elle accompagne avec une rare capacité à mettre les mots sur ce qu'on n'arrive pas à formuler soi-même.</p>
+    </div>
+  </div>
+
+  <div class="expert-card">
+    <div class="expert-photo"><span class="expert-photo-placeholder">Photo à venir</span></div>
+    <div class="expert-info">
+      <p class="expert-domain">Bilan de compétences · CEP</p>
+      <h3 class="expert-name">Nathalie Marchand</h3>
+      <p class="expert-rating">★★★★★ &nbsp;4.8/5</p>
+      <p class="expert-bio">Consultante en bilan de compétences depuis 9 ans, certifiée Qualiopi, 100% distanciel. Sa méthode allie rigueur analytique et profonde écoute humaine. Ses bénéficiaires décrivent systématiquement un « déclic » qu'ils n'attendaient plus.</p>
+    </div>
+  </div>
+
+  <div class="expert-card">
+    <div class="expert-photo"><span class="expert-photo-placeholder">Photo à venir</span></div>
+    <div class="expert-info">
+      <p class="expert-domain">Gestion de patrimoine</p>
+      <h3 class="expert-name">Antoine Lefèvre</h3>
+      <p class="expert-rating">★★★★★ &nbsp;4.7/5</p>
+      <p class="expert-bio">Conseiller en gestion de patrimoine indépendant, spécialisé dans les transitions professionnelles et la création d'activité. Son approche pédagogique démystifie la finance et révèle des outils souvent méconnus — parfois des leviers décisifs pour un projet de vie.</p>
+    </div>
+  </div>
+
+  <div class="expert-card">
+    <div class="expert-photo"><span class="expert-photo-placeholder">Photo à venir</span></div>
+    <div class="expert-info">
+      <p class="expert-domain">Sophro · Bien-être</p>
+      <h3 class="expert-name">Élodie Renard</h3>
+      <p class="expert-rating">★★★★★ &nbsp;4.9/5</p>
+      <p class="expert-bio">Sophrologue et praticienne en kinésiologie, elle accompagne les personnes en période de rupture ou d'épuisement à retrouver leur ancrage corporel avant d'entamer une réflexion de fond. Une étape souvent sous-estimée — et pourtant décisive.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cta-block">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--charcoal);margin-bottom:1rem">Laissez-nous vous conseiller.</p>
+  <p>Nous ne vous assignons pas un expert au hasard. Lors de votre appel gratuit, nous identifions le profil — parmi nos 24 professionnels — qui correspond le mieux à votre personnalité et à votre besoin du moment.</p>
+  <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="btn-primary">Réserver mon appel gratuit</a>
+</div>
+
+<footer>
+  <div class="footer-logo">ChangerDeVie</div>
+  <a href="index.html" class="footer-link">← Retour à l'accueil</a>
+  <div class="footer-link">© 2026</div>
+</footer>
+</body>
+</html>

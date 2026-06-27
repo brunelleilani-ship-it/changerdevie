@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changer de Vie — Reprendre les rênes de votre vie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --sand: #D4BFA0; --sand-lt: #EDE3D4; --cream: #F7F3EE; --warm-white: #FDFAF6; --stone: #9C8670; --charcoal: #3A3028; --text: #4A3F35; --muted: #8C7B6E; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--warm-white); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav { position: fixed; top: 0; width: 100%; z-index: 200; padding: 1.1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; background: rgba(253,250,246,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(212,191,160,0.3); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; letter-spacing: 0.08em; color: var(--charcoal); text-decoration: none; }
+  .nav-logo span { color: var(--stone); }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-cta { display: inline-block; padding: 0.6rem 1.4rem; background: var(--charcoal); color: var(--warm-white); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+  .nav-cta:hover { background: var(--stone); }
+
+  /* hamburger */
+  .hamburger { cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* drawer */
+  .drawer { position: fixed; top: 0; right: -320px; width: 300px; height: 100vh; background: var(--warm-white); z-index: 300; padding: 5rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 0; transition: right 0.35s ease; box-shadow: -4px 0 30px rgba(0,0,0,0.08); border-left: 1px solid rgba(212,191,160,0.3); }
+  .drawer.open { right: 0; }
+  .drawer-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; cursor: pointer; font-size: 1.4rem; color: var(--muted); }
+  .drawer a { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--charcoal); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(212,191,160,0.2); transition: color 0.2s; }
+  .drawer a:hover { color: var(--stone); }
+  .drawer a.drawer-cta { margin-top: 1.5rem; border: none; display: inline-block; padding: 0.9rem 1.6rem; background: var(--charcoal); color: var(--warm-white); font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; }
+  .drawer a.drawer-cta:hover { background: var(--stone); }
+  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 250; display: none; }
+  .overlay.open { display: block; }
+
+  /* ── HERO ── */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 2rem 5rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background-image: url('hero.png'); background-size: cover; background-position: center 30%; z-index: 0; }
+  .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(58,48,40,0.55) 0%, rgba(58,48,40,0.35) 50%, rgba(253,250,246,0.9) 100%); }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow { font-size: 0.82rem; font-weight: 400; letter-spacing: 0.1em; color: rgba(255,255,255,0.85); margin-bottom: 1.4rem; font-style: italic; max-width: 540px; line-height: 1.7; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 300; line-height: 1.1; color: #fff; max-width: 780px; margin-bottom: 1.8rem; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+  .hero h1 em { font-style: italic; color: var(--sand-lt); }
+  .ornament { display: block; margin: 0 auto 1.6rem; color: rgba(212,191,160,0.8); font-size: 1.1rem; letter-spacing: 0.3em; }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.88); max-width: 480px; margin: 0 auto 2.8rem; line-height: 1.85; }
+  .btn-primary { display: inline-block; padding: 1rem 2.4rem; background: var(--charcoal); color: var(--warm-white); font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background 0.25s, transform 0.2s; }
+  .btn-primary:hover { background: var(--stone); transform: translateY(-1px); }
+  .hero-note { margin-top: 1.2rem; font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+  .hero-note a { color: var(--sand-lt); text-underline-offset: 3px; }
+
+  /* ── SECTION LABELS ── */
+  .section-label { text-align: center; padding: 5rem 2rem 1.5rem; }
+  .eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); display: block; margin-bottom: 0.8rem; }
+  .section-label h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: var(--charcoal); }
+  .section-label h2 em { font-style: italic; color: var(--stone); }
+  .intro-text { max-width: 600px; margin: 0 auto 3rem; text-align: center; padding: 0 2rem; color: var(--muted); font-size: 0.97rem; line-height: 1.9; }
+
+  /* ── TIMELINE ── */
+  .scroll-hint { text-align: center; margin-bottom: 1.5rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+  .scroll-hint span { animation: pulse 2s infinite; display: inline-block; }
+  @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+  .timeline-wrapper { width: 100%; padding: 0 4rem 2rem; overflow-x: auto; -webkit-overflow-scrolling: touch; cursor: grab; scrollbar-width: thin; scrollbar-color: var(--sand) transparent; }
+  .timeline-wrapper:active { cursor: grabbing; }
+  .timeline { display: flex; align-items: stretch; min-width: max-content; position: relative; padding-bottom: 1rem; }
+  .timeline::before { content: ''; position: absolute; top: 52px; left: 80px; right: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--sand) 10%, var(--sand) 90%, transparent); }
+  .step { width: 270px; flex-shrink: 0; padding: 0 1.4rem; display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; }
+  .step-dot-wrap { width: 104px; height: 104px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.6rem; position: relative; z-index: 2; }
+  .step-dot { width: 56px; height: 56px; border-radius: 50%; background: var(--cream); border: 1.5px solid var(--sand); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; color: var(--stone); transition: all 0.3s ease; }
+  .step:hover .step-dot, .step.active .step-dot { background: var(--sand); color: var(--warm-white); transform: scale(1.15); box-shadow: 0 0 0 8px rgba(212,191,160,0.2); border-color: var(--stone); }
+  .step[data-index="0"] .step-dot { background: #F0E8DC; border-color: #C9AA88; }
+  .step[data-index="0"]:hover .step-dot, .step[data-index="0"].active .step-dot { background: #C9AA88; color: var(--warm-white); }
+  .step-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.5rem; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--charcoal); line-height: 1.3; margin-bottom: 0.7rem; }
+  .step-signal { font-size: 0.85rem; font-style: italic; color: var(--muted); line-height: 1.6; margin-bottom: 0.8rem; min-height: 4em; }
+  .step-experts { font-size: 0.73rem; color: var(--stone); border-top: 1px solid rgba(212,191,160,0.4); padding-top: 0.7rem; margin-top: auto; width: 100%; line-height: 1.8; }
+
+  /* ── DETAIL PANEL ── */
+  .detail-panel { max-width: 820px; margin: 1.5rem auto 4rem; padding: 0 2rem; display: none; }
+  .detail-panel.visible { display: block; animation: fadeUp 0.4s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .detail-inner { background: var(--cream); border: 1px solid rgba(212,191,160,0.5); padding: 2.4rem 3rem; display: flex; gap: 3rem; align-items: flex-start; }
+  .detail-step-num { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(212,191,160,0.5); line-height: 1; flex-shrink: 0; margin-top: -0.5rem; }
+  .detail-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.7rem; }
+  .detail-content p { color: var(--muted); font-size: 0.92rem; line-height: 1.85; margin-bottom: 1rem; }
+  .expert-note { font-size: 0.8rem; color: var(--stone); font-style: italic; border-left: 2px solid var(--sand); padding-left: 1rem; }
+  .detail-cta { display: inline-block; margin-top: 1.2rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; border-bottom: 1px solid var(--sand); padding-bottom: 2px; transition: color 0.2s; }
+  .detail-cta:hover { color: var(--stone); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: var(--sand-lt); padding: 5rem 0; }
+  .testimonials-section .section-label { padding-top: 0; }
+  .testimonials-track { display: flex; gap: 1.8rem; overflow-x: auto; padding: 1rem 3rem 2rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; max-width: 1200px; margin: 0 auto; scrollbar-width: thin; scrollbar-color: var(--sand) transparent; }
+  .testimonial-card { min-width: 320px; max-width: 340px; background: var(--warm-white); padding: 2rem; scroll-snap-align: start; flex-shrink: 0; }
+  .testimonial-stars { color: var(--sand); font-size: 1.2rem; margin-bottom: 0.8rem; }
+  .testimonial-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--charcoal); line-height: 1.65; margin-bottom: 1.2rem; }
+  .testimonial-name { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; color: var(--stone); text-transform: uppercase; margin-bottom: 0.3rem; }
+  .testimonial-context { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+  .testimonials-more { text-align: center; margin-top: 2rem; }
+
+  /* ── CTA ── */
+  .cta-section { padding: 6rem 2rem; text-align: center; }
+  .cta-section::before { content: '✦'; display: block; color: var(--sand); font-size: 1.2rem; margin-bottom: 2rem; letter-spacing: 0.4em; }
+  .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; color: var(--charcoal); max-width: 600px; margin: 0 auto 1.2rem; line-height: 1.3; }
+  .cta-section h2 em { font-style: italic; color: var(--stone); }
+  .cta-section > p { color: var(--muted); font-size: 0.95rem; max-width: 480px; margin: 0 auto 2.4rem; line-height: 1.85; }
+  .cta-note { margin-top: 1rem; font-size: 0.75rem; color: var(--stone); letter-spacing: 0.06em; }
+
+  /* ── ALT CTA (formulaire) ── */
+  .alt-cta-wrap { padding: 0 2rem 6rem; max-width: 600px; margin: 0 auto; }
+  .alt-cta { background: var(--cream); border: 1px solid rgba(212,191,160,0.5); padding: 2.4rem 2.5rem; text-align: center; }
+  .alt-cta h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.6rem; }
+  .alt-cta > p { font-size: 0.88rem; color: var(--muted); margin-bottom: 1.6rem; line-height: 1.7; }
+  .form-group { margin-bottom: 1rem; text-align: left; }
+  .form-group label { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea { width: 100%; padding: 0.75rem 1rem; border: 1px solid rgba(212,191,160,0.6); background: var(--warm-white); font-family: 'Jost', sans-serif; font-size: 0.88rem; color: var(--text); outline: none; transition: border-color 0.2s; resize: vertical; }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--stone); }
+  .form-group textarea { min-height: 110px; }
+
+  /* ── FOOTER ── */
+  footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(212,191,160,0.3); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-link { font-size: 0.72rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-link:hover { color: var(--charcoal); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.4rem; }
+    .timeline-wrapper { padding: 0 1rem 2rem; }
+    .step { width: 240px; padding: 0 1rem; }
+    .detail-inner { flex-direction: column; gap: 1rem; padding: 1.6rem; }
+    .detail-step-num { font-size: 3rem; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+
+<!-- DRAWER -->
+<div class="drawer" id="drawer">
+  <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  <a href="qui-sommes-nous.html">Qui sommes-nous</a>
+  <a href="nos-experts.html">Nos experts</a>
+  <a href="nos-valeurs.html">Nos valeurs</a>
+  <a href="avis-clients.html">Avis clients</a>
+  <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="drawer-cta">Conseil gratuit</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Changer<span>de</span>Vie</a>
+  <div class="nav-right">
+    <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="nav-cta">Conseil gratuit</a>
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Changer de vie entouré par de vrais experts sélectionnés</p>
+    <h1>Et si le moment était venu<br>de reprendre les <em>rênes</em><br>de votre vie ?</h1>
+    <span class="ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
+    <p class="hero-sub">Vous sentez que quelque chose doit changer. Mais vous ne savez pas par où commencer. Nos experts sélectionnés sont là pour vous aider.</p>
+    <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="btn-primary">Réserver mon conseil gratuit</a>
+    <p class="hero-note">Ou <a href="#contact">décrivez-nous votre situation par écrit →</a></p>
+  </div>
+</section>
+
+<!-- PARCOURS -->
+<div id="parcours" class="section-label">
+  <span class="eyebrow">Le parcours</span>
+  <h2>Où en êtes-vous <em>aujourd'hui</em> ?</h2>
+</div>
+<p class="intro-text">Chaque chemin et personnalité est unique. Identifiez l'étape qui vous ressemble — nous vous accompagnons exactement là où vous en êtes, avec l'expert qui correspond à votre besoin, profil et personnalité.</p>
+
+<div class="scroll-hint"><span>← faites défiler →</span></div>
+
+<div class="timeline-wrapper" id="timelineWrapper">
+  <div class="timeline">
+
+    <div class="step" data-index="0" onclick="toggleStep(0)">
+      <div class="step-dot-wrap"><div class="step-dot">✦</div></div>
+      <p class="step-tag">Avant tout</p>
+      <h3 class="step-title">Reprendre<br>son souffle</h3>
+      <p class="step-signal">« Je suis épuisé(e). Je n'ai plus l'énergie de réfléchir à quoi que ce soit. »</p>
+      <div class="step-experts">Psychologue · Sophrologue<br>Shiatsu · Kinésiologie · Yoga</div>
+    </div>
+
+    <div class="step" data-index="1" onclick="toggleStep(1)">
+      <div class="step-dot-wrap"><div class="step-dot">1</div></div>
+      <p class="step-tag">Clarifier</p>
+      <h3 class="step-title">Définir<br>son cap</h3>
+      <p class="step-signal">« Je sais ce que je dois changer mais je suis dans le flou — je n'arrive pas à cerner ce que je veux vraiment. »</p>
+      <div class="step-experts">Bilan de compétences<br>Conseil en évolution professionnelle</div>
+    </div>
+
+    <div class="step" data-index="2" onclick="toggleStep(2)">
+      <div class="step-dot-wrap"><div class="step-dot">2</div></div>
+      <p class="step-tag">Sécuriser</p>
+      <h3 class="step-title">Construire sa<br>stratégie financière</h3>
+      <p class="step-signal">« Je ne me suis jamais penchée sérieusement sur ma situation financière — pourtant je sens que ça pourrait m'aider dans mes changements de vie. »</p>
+      <div class="step-experts">Conseiller en gestion de patrimoine</div>
+    </div>
+
+    <div class="step" data-index="3" onclick="toggleStep(3)">
+      <div class="step-dot-wrap"><div class="step-dot">3</div></div>
+      <p class="step-tag">Créer</p>
+      <h3 class="step-title">Lancer<br>son activité</h3>
+      <p class="step-signal">« Mon projet est clair — mais je ne sais pas comment structurer et naviguer le parcours de l'entrepreneur. »</p>
+      <div class="step-experts">Conseiller en création d'entreprise<br>Accompagnement VAE</div>
+    </div>
+
+    <div class="step" data-index="4" onclick="toggleStep(4)">
+      <div class="step-dot-wrap"><div class="step-dot">4</div></div>
+      <p class="step-tag">Se réorienter</p>
+      <h3 class="step-title">Se réorienter,<br>changer d'entreprise</h3>
+      <p class="step-signal">« Je veux valoriser mon expérience, me repositionner — ou tout simplement partir vers autre chose qui me ressemble davantage. »</p>
+      <div class="step-experts">VAE · Outplacement<br>Conseil en évolution professionnelle</div>
+    </div>
+
+    <div class="step" data-index="5" onclick="toggleStep(5)">
+      <div class="step-dot-wrap"><div class="step-dot">5</div></div>
+      <p class="step-tag">Ancrer</p>
+      <h3 class="step-title">Tenir le cap,<br>se renforcer</h3>
+      <p class="step-signal">« J'avance ! Mais j'aimerais être aidé(e) pour garder le cap ou me renforcer sur des points précis. »</p>
+      <div class="step-experts">Coachs spécialisés<br>(prise de parole, leadership, confiance…)</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DETAIL PANEL -->
+<div class="detail-panel" id="detailPanel">
+  <div class="detail-inner">
+    <div class="detail-step-num" id="detailNum">✦</div>
+    <div class="detail-content">
+      <h3 id="detailTitle">—</h3>
+      <p id="detailText">—</p>
+      <p class="expert-note" id="detailExpert">—</p>
+      <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="detail-cta">Je me reconnais ici — réserver mon conseil gratuit →</a>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-label" style="padding-top:0">
+    <span class="eyebrow">Ils ont franchi le pas</span>
+    <h2>Ce qu'ils en <em>disent</em></h2>
+  </div>
+  <div class="testimonials-track">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">« J'ai fait mon Bilan de Compétences avec Leilani. J'ai appris bien plus sur moi ! Ça a vraiment été une expérience qui a changé ma vie. »</p>
+      <p class="testimonial-name">Barbara</p>
+      <p class="testimonial-context">Secrétaire médicale · +20% de salaire en quelques semaines</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">« À 58 ans, mon Bilan avec Leilani était le 3ème — et le plus transformateur. J'ai enfin trouvé la direction qui me correspond vraiment. »</p>
+      <p class="testimonial-name">Pascal, 58 ans</p>
+      <p class="testimonial-context">Retour en métropole après 15 ans à Tahiti · Projet ESS en cours</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">« Au cours du bilan, j'ai appris énormément sur moi, regagné en confiance et transformé mes points faibles en atouts. »</p>
+      <p class="testimonial-name">Morgane</p>
+      <p class="testimonial-context">Chef de projet IT · Déménagée à Tahiti, salaire au-dessus de ses attentes</p>
+    </div>
+  </div>
+  <div class="testimonials-more">
+    <a href="avis-clients.html" style="font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--sand);padding-bottom:2px">Voir tous les témoignages →</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="call">
+  <h2>Pas sûr(e) de savoir<br><em>où vous en êtes</em> ?</h2>
+  <p>En 30 minutes, nous identifions ensemble votre point de départ et vous orientons vers les experts qui vous correspondent — parmi notre sélection rigoureuse de 24 professionnels choisis pour leur haute performance et leur dimension humaine.</p>
+  <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="btn-primary">Réserver mon conseil gratuit</a>
+  <p class="cta-note">Sans engagement · Confidentiel · Avec notre conseillère formée</p>
+</section>
+
+<!-- FORMULAIRE -->
+<div class="alt-cta-wrap" id="contact">
+  <div class="alt-cta">
+    <h3>Vous n'aimez pas le téléphone ?</h3>
+    <p>Décrivez-nous votre situation actuelle. Nous vous répondons personnellement par écrit sous 48h.</p>
+    <div class="form-group"><label>Votre prénom</label><input type="text" placeholder="Marie"></div>
+    <div class="form-group"><label>Votre email</label><input type="email" placeholder="marie@exemple.com"></div>
+    <div class="form-group"><label>Votre situation en quelques mots</label><textarea placeholder="Je travaille dans X depuis Y ans, et je ressens..."></textarea></div>
+    <button class="btn-primary" style="width:100%;margin-top:0.5rem" onclick="alert('À connecter à votre boîte mail ou Typeform')">Envoyer ma situation</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">ChangerDeVie</div>
+  <div class="footer-links">
+    <a href="qui-sommes-nous.html" class="footer-link">Qui sommes-nous</a>
+    <a href="nos-experts.html" class="footer-link">Nos experts</a>
+    <a href="nos-valeurs.html" class="footer-link">Nos valeurs</a>
+    <a href="avis-clients.html" class="footer-link">Avis clients</a>
+  </div>
+  <div class="footer-link">© 2026 ChangerDeVie</div>
+</footer>
+
+<script>
+  // drawer
+  function toggleDrawer() {
+    document.getElementById('drawer').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+  }
+  function closeDrawer() {
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
+  // timeline
+  const details = [
+    { num: '✦', title: 'Reprendre son souffle', text: "Il faut être dans de bonnes conditions pour initier un changement de vie efficace. En fonction de ce que vous exprimez, nous vous faisons découvrir des pratiques bien-être qui pourraient vous convenir et pouvons vous conseiller des praticiens dont les retours clients sont élogieux.", expert: "Psychologues spécialisé burn-out, sophrologues, naturopathes, kinésiologues, praticiens shiatsu, professeurs de yoga…" },
+    { num: '1', title: 'Définir son cap', text: "Quand on ne sait plus où l'on va, un bilan de compétences offre un espace rare : celui de se retrouver soi-même, pour passer du doute à la clarté. En explorant ses valeurs, ses talents et ses aspirations profondes, on dessine un projet de vie concret, cohérent et réaliste.", expert: "Nous vous orientons vers le consultant en bilan de compétences ou conseiller CEP dont l'approche correspond à votre profil et situation, éligibles CPF ou gratuits." },
+    { num: '2', title: 'Construire sa stratégie financière', text: "Changer de vie ou l'améliorer, c'est aussi l'opportunité parfaite de faire le point sur sa situation financière personnelle et d'établir une stratégie adaptée à ses nouveaux objectifs. Tout est possible avec la bonne stratégie — et nous méconnaissons souvent de nombreux outils à notre disposition.", expert: "Nous vous mettons en relation avec un conseiller en gestion de patrimoine indépendant, sélectionné pour son expertise des transitions de vie et sa pédagogie." },
+    { num: '3', title: 'Lancer son activité', text: "Le projet est clair, votre situation financière clarifiée — il est temps de construire. Si vous ressentez le besoin d'être accompagné(e) dans le parcours parfois tortueux de l'entrepreneur, nous pouvons vous aider.", expert: "Nous vous orientons vers nos conseillers en création d'entreprise, sélectionnés pour leurs réussites — et vers un accompagnateur VAE si votre expérience mérite d'être certifiée." },
+    { num: '4', title: 'Se réorienter, changer d\'entreprise', text: "Parfois, le changement passe par un repositionnement professionnel ou la valorisation de son expérience. La VAE permet de faire reconnaître officiellement vos acquis. L'outplacement est un outil puissant pour une transition efficace — et il peut être financé par votre employeur.", expert: "Nous vous orientons vers un accompagnateur VAE, un conseiller CEP ou un coach en outplacement selon votre situation et vos objectifs." },
+    { num: '5', title: 'Tenir le cap, se renforcer', text: "Le changement est lancé — mais l'aventure ne s'arrête pas là. Peut-être avez-vous identifié des lacunes précises à combler : apprendre à vous vendre, prendre la parole en public, renforcer votre leadership. C'est ici que la transformation devient durable.", expert: "Nous vous orientons vers des coachs ou experts spécialisés qui correspondent exactement à vos besoins identifiés." }
+  ];
+
+  let current = -1;
+  function toggleStep(idx) {
+    const steps = document.querySelectorAll('.step');
+    const panel = document.getElementById('detailPanel');
+    if (current === idx) { steps[idx].classList.remove('active'); panel.classList.remove('visible'); current = -1; return; }
+    steps.forEach(s => s.classList.remove('active'));
+    steps[idx].classList.add('active');
+    const d = details[idx];
+    document.getElementById('detailNum').textContent = d.num;
+    document.getElementById('detailTitle').textContent = d.title;
+    document.getElementById('detailText').textContent = d.text;
+    document.getElementById('detailExpert').textContent = d.expert;
+    panel.classList.remove('visible'); void panel.offsetWidth; panel.classList.add('visible');
+    current = idx;
+    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+  }
+
+  // drag-to-scroll
+  const wrapper = document.getElementById('timelineWrapper');
+  let isDown = false, startX, scrollLeft;
+  wrapper.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - wrapper.offsetLeft; scrollLeft = wrapper.scrollLeft; });
+  wrapper.addEventListener('mouseleave', () => isDown = false);
+  wrapper.addEventListener('mouseup', () => isDown = false);
+  wrapper.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); wrapper.scrollLeft = scrollLeft - (e.pageX - wrapper.offsetLeft - startX) * 1.2; });
+</script>
+</body>
+</html>

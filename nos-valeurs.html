@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nos Valeurs — ChangerDeVie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--sand:#D4BFA0;--sand-lt:#EDE3D4;--cream:#F7F3EE;--warm-white:#FDFAF6;--stone:#9C8670;--charcoal:#3A3028;--text:#4A3F35;--muted:#8C7B6E}
+  body{background:var(--warm-white);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7}
+  nav{position:fixed;top:0;width:100%;z-index:200;padding:1.1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(253,250,246,0.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(212,191,160,0.3)}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;letter-spacing:0.08em;color:var(--charcoal);text-decoration:none}
+  .nav-logo span{color:var(--stone)}
+  .nav-right{display:flex;align-items:center;gap:1.5rem}
+  .nav-cta{display:inline-block;padding:0.6rem 1.4rem;background:var(--charcoal);color:var(--warm-white);font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
+  .nav-cta:hover{background:var(--stone)}
+  .hamburger{cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px;background:none;border:none}
+  .hamburger span{display:block;width:22px;height:1.5px;background:var(--charcoal);transition:all 0.3s}
+  .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+  .drawer{position:fixed;top:0;right:-320px;width:300px;height:100vh;background:var(--warm-white);z-index:300;padding:5rem 2.5rem 3rem;display:flex;flex-direction:column;transition:right 0.35s ease;box-shadow:-4px 0 30px rgba(0,0,0,0.08);border-left:1px solid rgba(212,191,160,0.3)}
+  .drawer.open{right:0}
+  .drawer-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;cursor:pointer;font-size:1.4rem;color:var(--muted)}
+  .drawer a{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--charcoal);text-decoration:none;padding:0.9rem 0;border-bottom:1px solid rgba(212,191,160,0.2)}
+  .drawer a.drawer-cta{margin-top:1.5rem;border:none;display:inline-block;padding:0.9rem 1.6rem;background:var(--charcoal);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-align:center}
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:250;display:none}
+  .overlay.open{display:block}
+  .eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:0.8rem}
+  footer{padding:2.5rem 3rem;border-top:1px solid rgba(212,191,160,0.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted)}
+  .footer-link{font-size:0.72rem;color:var(--muted);text-decoration:none}
+
+  .page-hero{padding:10rem 2rem 5rem;text-align:center;background:linear-gradient(160deg,var(--warm-white) 60%,var(--sand-lt) 100%)}
+  .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:var(--charcoal)}
+  .page-hero h1 em{font-style:italic;color:var(--stone)}
+  .page-hero p{max-width:520px;margin:1.5rem auto 0;color:var(--muted);font-size:0.95rem;line-height:1.85;font-style:italic}
+  .values-wrap{max-width:760px;margin:0 auto;padding:5rem 2rem 6rem}
+  .value-block{margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(212,191,160,0.3)}
+  .value-block:last-child{border-bottom:none;margin-bottom:0}
+  .value-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(212,191,160,0.4);line-height:1;margin-bottom:0.5rem}
+  .value-title{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:var(--charcoal);margin-bottom:1.2rem}
+  .value-title em{font-style:italic;color:var(--stone)}
+  .value-text{color:var(--muted);font-size:0.95rem;line-height:1.9;margin-bottom:0.8rem}
+  .commitment{background:var(--cream);border:1px solid rgba(212,191,160,0.5);padding:3rem;margin-top:4rem;text-align:center}
+  .commitment p{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-style:italic;color:var(--charcoal);line-height:1.7;max-width:540px;margin:0 auto 1rem}
+  .commitment .sign{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone)}
+  @media(max-width:768px){nav{padding:1rem 1.4rem}footer{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  <a href="index.html">Accueil</a>
+  <a href="qui-sommes-nous.html">Qui sommes-nous</a>
+  <a href="nos-experts.html">Nos experts</a>
+  <a href="avis-clients.html">Avis clients</a>
+  <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="drawer-cta">Conseil gratuit</a>
+</div>
+<nav>
+  <a href="index.html" class="nav-logo">Changer<span>de</span>Vie</a>
+  <div class="nav-right">
+    <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="nav-cta">Conseil gratuit</a>
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <span class="eyebrow">Ce qui nous guide</span>
+  <h1>Nos <em>valeurs</em></h1>
+  <p>Notre éthique est stricte, car centrée sur le besoin de l'autre avant tout. Tous nos experts partagent ces engagements et s'y sont engagés.</p>
+</section>
+
+<div class="values-wrap">
+
+  <div class="value-block">
+    <div class="value-num">01</div>
+    <h2 class="value-title">L'intérêt de l'autre <em>avant tout</em></h2>
+    <p class="value-text">Nous conseillons chaque personne en premier dans son intérêt — même si cela signifie l'orienter vers un autre service ou un concurrent. Si nous identifions qu'une autre expertise peut être plus adaptée que la nôtre, nous priorisons l'efficacité pour la personne accompagnée.</p>
+    <p class="value-text">Nous refusons ou interrompons également l'accompagnement d'une personne qui refuse de suivre des recommandations médicales nécessaires. Notre accompagnement ne remplace pas un suivi médical — il le complète. Une personne doit être dans ses pleines capacités pour en tirer le meilleur profit.</p>
+    <p class="value-text">Tout cela peut sembler contraire à notre intérêt financier immédiat. Nous pensons que sur le long terme, ce n'est pas le cas — car la confiance prouvée et gagnée est la seule fondation durable d'une relation d'accompagnement.</p>
+  </div>
+
+  <div class="value-block">
+    <div class="value-num">02</div>
+    <h2 class="value-title">L'excellence <em>sans compromis</em></h2>
+    <p class="value-text">Chaque expert de notre réseau est sélectionné sur la base de son expérience, de ses résultats mesurables et de ses avis clients — minimum 4,5/5. Nous réévaluons régulièrement cette sélection. Un expert qui ne maintient pas son niveau de qualité quitte le réseau.</p>
+  </div>
+
+  <div class="value-block">
+    <div class="value-num">03</div>
+    <h2 class="value-title">L'intelligence collective <em>au service de l'autre</em></h2>
+    <p class="value-text">Beaucoup de personnes proposent d'accompagner sur tous les aspects du changement de vie, pour « garder » un client. Nous pensons qu'il est difficile qu'une seule personne combine des expertises profondes en réorientation, en création d'entreprise, en gestion de patrimoine et en bien-être simultanément.</p>
+    <p class="value-text">C'est pourquoi nous préférons rassembler des experts dans chaque domaine, qui peuvent se relayer et apporter une vraie profondeur aux problématiques des personnes accompagnées.</p>
+  </div>
+
+  <div class="value-block">
+    <div class="value-num">04</div>
+    <h2 class="value-title">L'IA <em>au service de l'humain, et non l'inverse</em></h2>
+    <p class="value-text">Nous pensons que l'IA peut augmenter la qualité du service que nous apportons, et que s'en priver serait priver nos accompagnés d'une qualité accrue. Placeriez-vous votre argent uniquement sur conseil de ChatGPT ? Certainement pas — et cela s'applique à tout accompagnement de vie.</p>
+    <p class="value-text">Nous pensons que pour en tirer le meilleur, son utilisation doit être supervisée par un expert, capable de vérifier, nuancer et contextualiser les résultats obtenus. Il est donc possible que nous y fassions appel — dans ce cas nous vous le précisons, et nous respectons strictement votre confidentialité : aucun nom n'est jamais entré dans nos outils.</p>
+  </div>
+
+  <div class="commitment">
+    <p>« Nous n'avons aucune hésitation à perdre du temps ou de l'argent, si c'est dans l'intérêt de l'accompagné. Car la confiance est notre trésor le plus précieux. »</p>
+    <span class="sign">— Leilani Brunel, fondatrice</span>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">ChangerDeVie</div>
+  <a href="index.html" class="footer-link">← Retour à l'accueil</a>
+  <div class="footer-link">© 2026</div>
+</footer>
+<script>
+  function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');document.getElementById('overlay').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open')}
+  function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
+</script>
+</body>
+</html>
