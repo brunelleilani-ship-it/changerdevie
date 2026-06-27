@@ -42,7 +42,7 @@
   .hero-bg { position: absolute; inset: 0; background-image: url('hero.png'); background-size: cover; background-position: center 30%; z-index: 0; }
   .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(58,48,40,0.55) 0%, rgba(58,48,40,0.35) 50%, rgba(253,250,246,0.9) 100%); }
   .hero-content { position: relative; z-index: 1; }
-  .hero-eyebrow { font-size: 0.82rem; font-weight: 400; letter-spacing: 0.1em; color: rgba(255,255,255,0.85); margin-bottom: 1.4rem; font-style: italic; max-width: 540px; line-height: 1.7; }
+  .hero-eyebrow { font-size: 0.82rem; font-weight: 400; letter-spacing: 0.1em; color: rgba(255,255,255,0.85); margin-bottom: 1.4rem; font-style: italic; max-width: 540px; line-height: 1.7; text-align: center; width: 100%; }
   .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 300; line-height: 1.1; color: #fff; max-width: 780px; margin-bottom: 1.8rem; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
   .hero h1 em { font-style: italic; color: var(--sand-lt); }
   .ornament { display: block; margin: 0 auto 1.6rem; color: rgba(212,191,160,0.8); font-size: 1.1rem; letter-spacing: 0.3em; }
@@ -223,22 +223,14 @@
 
     <div class="step" data-index="4" onclick="toggleStep(4)">
       <div class="step-dot-wrap"><div class="step-dot">4</div></div>
-      <p class="step-signal">« Je veux être reconnue à ma juste valeur. »</p>
-      <p class="step-tag">Se réorienter</p>
-      <h3 class="step-title">Nouveau chapitre</h3>
-      <div class="step-experts">VAE · CEP</div>
+      <p class="step-signal">« Je change ! Mais je ne peux pas me permettre de sauter dans le vide. »</p>
+      <p class="step-tag">Évoluer</p>
+      <h3 class="step-title">Changer, rebondir, se réorienter</h3>
+      <div class="step-experts">Outplacement · VAE · CEP</div>
     </div>
 
     <div class="step" data-index="5" onclick="toggleStep(5)">
       <div class="step-dot-wrap"><div class="step-dot">5</div></div>
-      <p class="step-signal">« Je veux partir. Mais je ne peux pas me permettre de sauter dans le vide. »</p>
-      <p class="step-tag">Rebondir</p>
-      <h3 class="step-title">Changer d'entreprise</h3>
-      <div class="step-experts">Outplacement · Bilan de compétences</div>
-    </div>
-
-    <div class="step" data-index="6" onclick="toggleStep(6)">
-      <div class="step-dot-wrap"><div class="step-dot">6</div></div>
       <p class="step-signal">« J'avance. Mais seul(e), je sens que je vais me perdre en chemin. »</p>
       <p class="step-tag">Ancrer</p>
       <h3 class="step-title">Tenir le cap</h3>
@@ -343,9 +335,8 @@
     { num: '1', title: 'Définir son cap', text: "Vous savez que quelque chose doit changer — mais le brouillard est total. Vous tournez en rond, vous n'arrivez pas à nommer ce que vous voulez vraiment. Un bilan de compétences offre un espace rare : celui de se retrouver soi-même, pour passer du doute à la clarté.", expert: "Nous vous orientons vers un consultant en bilan de compétences dont l'approche et la personnalité correspondent à votre profil." },
     { num: '2', title: 'Construire sa stratégie financière', text: "Changer de vie peut s'avérer bien plus facile — ou amplifié — avec une stratégie financière réfléchie et solide. Nous méconnaissons souvent de nombreux outils à notre disposition ! C'est peut-être le moment idéal de s'y poser sérieusement pour construire une stratégie alignée avec vos objectifs.", expert: "Nous vous mettons en relation avec un conseiller en gestion de patrimoine indépendant, sélectionné pour son expertise des transitions de vie et sa pédagogie." },
     { num: '3', title: 'Lancer son activité', text: "Le projet est clair, l'envie est là. Mais entre l'idée et la réalité de l'entrepreneur, il y a un parcours semé d'embûches administratives, juridiques, financières. Être bien accompagné à ce stade change tout.", expert: "Nous vous orientons vers des conseillers en création d'entreprise sélectionnés pour leurs réussites." },
-    { num: '4', title: 'Nouveau chapitre', text: "Vous avez identifié que vous aviez des compétences, mais que le marché ne vous reconnaît pas à votre juste valeur. La VAE permet de faire certifier officiellement ce que vous savez faire pour booster votre carrière. Le CEP identifie la formation qu'il vous manque pour la bifurcation que vous avez mûrie et choisie — et vous oriente vers la formation qui vous manque pour votre projet.", expert: "Nous vous orientons vers un accompagnateur VAE, ou vers un conseiller CEP pour exécuter votre évolution ou réorientation professionnelle." },
-    { num: '5', title: 'Changer d\'entreprise', text: "L'envie de partir est claire. Mais comment se repositionner efficacement ? Comment valoriser ce que vous avez accompli ? L'outplacement est un outil puissant et méconnu pour réussir cette transition — et dans certains cas, il peut être financé par votre employeur.", expert: "Nous vous orientons vers nos conseillers en outplacement pour une transition professionnelle structurée et efficace." },
-    { num: '6', title: 'Tenir le cap', text: "Vous avancez — c'est déjà énorme. Mais certains points précis vous freinent encore : comment vous vendre, prendre la parole, affirmer votre leadership. C'est ici que la transformation devient durable.", expert: "Nous vous orientons vers des coachs spécialisés qui correspondent exactement à vos besoins : prise de parole, leadership, confiance en soi, gestion du temps…" }
+    { num: '4', title: 'Changer, rebondir, se réorienter', text: "Vous savez que vous devez bouger — mais le risque vous freine. Trois chemins possibles selon votre situation : changer d'entreprise avec un accompagnement en outplacement (parfois financé par votre employeur), valoriser officiellement votre expérience via la VAE pour booster votre carrière, ou identifier avec le CEP la formation qu'il vous manque pour exécuter la bifurcation que vous avez choisie.", expert: "Nous vous orientons vers un conseiller en outplacement, un accompagnateur VAE, ou un conseiller CEP — selon ce qui correspond à votre situation." },
+    { num: '5', title: 'Tenir le cap', text: "Vous avancez — c'est déjà énorme. Mais certains points précis vous freinent encore : comment vous vendre, prendre la parole, affirmer votre leadership. C'est ici que la transformation devient durable.", expert: "Nous vous orientons vers des coachs spécialisés qui correspondent exactement à vos besoins : prise de parole, leadership, confiance en soi, gestion du temps…" }
   ];
 
   let current = -1;
