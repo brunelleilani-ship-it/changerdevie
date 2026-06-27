@@ -1,77 +1,110 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Qui sommes-nous — ChangerDeVie</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{--sand:#D4BFA0;--sand-lt:#EDE3D4;--cream:#F7F3EE;--warm-white:#FDFAF6;--stone:#9C8670;--charcoal:#3A3028;--text:#4A3F35;--muted:#8C7B6E}
-  html{scroll-behavior:smooth}
-  body{background:var(--warm-white);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7}
-  nav{position:fixed;top:0;width:100%;z-index:200;padding:1.1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(253,250,246,0.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(212,191,160,0.3)}
-  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;letter-spacing:0.08em;color:var(--charcoal);text-decoration:none}
-  .nav-logo span{color:var(--stone)}
-  .nav-right{display:flex;align-items:center;gap:1.5rem}
-  .nav-cta{display:inline-block;padding:0.6rem 1.4rem;background:var(--charcoal);color:var(--warm-white);font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
-  .nav-cta:hover{background:var(--stone)}
-  .hamburger{cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px;background:none;border:none}
-  .hamburger span{display:block;width:22px;height:1.5px;background:var(--charcoal);transition:all 0.3s}
-  .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-  .hamburger.open span:nth-child(2){opacity:0}
-  .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-  .drawer{position:fixed;top:0;right:-320px;width:300px;height:100vh;background:var(--warm-white);z-index:300;padding:5rem 2.5rem 3rem;display:flex;flex-direction:column;transition:right 0.35s ease;box-shadow:-4px 0 30px rgba(0,0,0,0.08);border-left:1px solid rgba(212,191,160,0.3)}
-  .drawer.open{right:0}
-  .drawer-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;cursor:pointer;font-size:1.4rem;color:var(--muted)}
-  .drawer a{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--charcoal);text-decoration:none;padding:0.9rem 0;border-bottom:1px solid rgba(212,191,160,0.2)}
-  .drawer a.drawer-cta{margin-top:1.5rem;border:none;display:inline-block;padding:0.9rem 1.6rem;background:var(--charcoal);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-align:center}
-  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:250;display:none}
-  .overlay.open{display:block}
-  .eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:0.8rem}
-  .btn-primary{display:inline-block;padding:1rem 2.4rem;background:var(--charcoal);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.25s}
-  .btn-primary:hover{background:var(--stone)}
-  footer{padding:2.5rem 3rem;border-top:1px solid rgba(212,191,160,0.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted)}
-  .footer-link{font-size:0.72rem;color:var(--muted);text-decoration:none}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --sand: #D4BFA0; --sand-lt: #EDE3D4; --cream: #F7F3EE; --warm-white: #FDFAF6; --stone: #9C8670; --charcoal: #3A3028; --text: #4A3F35; --muted: #8C7B6E; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--warm-white); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
 
-  .page-hero{padding:10rem 2rem 5rem;text-align:center;position:relative;overflow:hidden;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:var(--charcoal)}
-  .page-hero h1 em{font-style:italic;color:var(--stone)}
-  .content-block{max-width:740px;margin:0 auto;padding:5rem 2rem 6rem}
-  .portrait-wrap{display:flex;gap:3.5rem;align-items:flex-start;margin-bottom:3rem}
-  .portrait-img{width:200px;height:260px;flex-shrink:0;background:var(--sand-lt);display:flex;align-items:center;justify-content:center;font-size:0.72rem;letter-spacing:0.1em;color:var(--stone);text-transform:uppercase;text-align:center}
-  .portrait-text h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--charcoal);margin-bottom:0.2rem}
-  .portrait-text .title{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);margin-bottom:1.4rem;display:block}
-  .story p{color:var(--muted);font-size:0.93rem;line-height:1.92;margin-bottom:1rem}
-  .quote-block{border-left:2px solid var(--sand);padding:1.2rem 2rem;margin:2.5rem 0;background:var(--cream)}
-  .quote-block p{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--charcoal);line-height:1.65}
-  @media(max-width:768px){nav{padding:1rem 1.4rem}.portrait-wrap{flex-direction:column;gap:2rem}.portrait-img{width:100%;height:180px}footer{flex-direction:column;text-align:center}}
+  /* ── NAV ── */
+  nav { position: fixed; top: 0; width: 100%; z-index: 200; padding: 1.1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; background: rgba(253,250,246,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(212,191,160,0.3); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; letter-spacing: 0.08em; color: var(--charcoal); text-decoration: none; }
+  .nav-logo span { color: var(--stone); }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-cta { display: inline-block; padding: 0.6rem 1.4rem; background: var(--charcoal); color: var(--warm-white); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+  .nav-cta:hover { background: var(--stone); }
+
+  /* hamburger */
+  .hamburger { cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* drawer */
+  .drawer { position: fixed; top: 0; right: -320px; width: 300px; height: 100vh; background: var(--warm-white); z-index: 300; padding: 5rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 0; transition: right 0.35s ease; box-shadow: -4px 0 30px rgba(0,0,0,0.08); border-left: 1px solid rgba(212,191,160,0.3); }
+  .drawer.open { right: 0; }
+  .drawer-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; cursor: pointer; font-size: 1.4rem; color: var(--muted); }
+  .drawer a { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--charcoal); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(212,191,160,0.2); transition: color 0.2s; }
+  .drawer a:hover { color: var(--stone); }
+  .drawer a.drawer-cta { margin-top: 1.5rem; border: none; display: inline-block; padding: 0.9rem 1.6rem; background: var(--charcoal); color: var(--warm-white); font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; }
+  .drawer a.drawer-cta:hover { background: var(--stone); }
+  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 250; display: none; }
+  .overlay.open { display: block; }
+
+
+
+
+  /* SHARED PAGE STYLES */
+  .eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); display: block; margin-bottom: 0.8rem; }
+  .btn-primary { display: inline-block; padding: 1rem 2.4rem; background: var(--charcoal); color: var(--warm-white); font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: background 0.25s; border: none; cursor: pointer; }
+  .btn-primary:hover { background: var(--stone); }
+  .page-hero { padding: 10rem 2rem 5rem; text-align: center; position: relative; overflow: hidden; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: var(--sand-lt); }
+  .page-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center 35%; z-index: 0; }
+  .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(253,250,246,0.55) 0%, rgba(253,250,246,0.80) 50%, rgba(253,250,246,1) 100%); z-index: 1; }
+  .page-hero-content { position: relative; z-index: 2; }
+  .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 300; color: var(--charcoal); line-height: 1.15; margin-bottom: 1rem; }
+  .page-hero h1 em { font-style: italic; color: var(--stone); }
+  .page-hero p { max-width: 580px; margin: 0 auto; color: var(--muted); font-size: 0.95rem; line-height: 1.9; }
+  footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(212,191,160,0.3); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--muted); }
+  .footer-link { font-size: 0.72rem; color: var(--muted); text-decoration: none; }
+  .footer-link:hover { color: var(--charcoal); }
+  @media (max-width: 768px) { nav { padding: 1rem 1.4rem; } footer { flex-direction: column; text-align: center; } }
+
+  .content-block { max-width: 740px; margin: 0 auto; padding: 5rem 2rem 6rem; }
+  .portrait-wrap { display: flex; gap: 3.5rem; align-items: flex-start; margin-bottom: 3rem; }
+  .portrait-img { width: 200px; height: 260px; flex-shrink: 0; background: var(--sand-lt); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; letter-spacing: 0.1em; color: var(--stone); text-transform: uppercase; text-align: center; }
+  .portrait-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--charcoal); margin-bottom: 0.2rem; }
+  .portrait-text .title { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); margin-bottom: 1.4rem; display: block; }
+  .story p { color: var(--muted); font-size: 0.93rem; line-height: 1.92; margin-bottom: 1rem; }
+  .story p em { font-style: italic; color: var(--charcoal); }
+  .quote-block { border-left: 2px solid var(--sand); padding: 1.2rem 2rem; margin: 2.5rem 0; background: var(--cream); }
+  .quote-block p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--charcoal); line-height: 1.65; }
+  @media (max-width: 768px) { .portrait-wrap { flex-direction: column; gap: 2rem; } .portrait-img { width: 100%; height: 180px; } }
+
 </style>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+<!-- OVERLAY -->
 <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+
+<!-- DRAWER -->
 <div class="drawer" id="drawer">
   <button class="drawer-close" onclick="closeDrawer()">✕</button>
-  <a href="index.html">Accueil</a>
+  <a href="vous-reconnaissez-vous.html">Vous reconnaissez-vous ?</a>
+  <a href="qui-sommes-nous.html">Qui sommes-nous</a>
   <a href="nos-experts.html">Nos experts</a>
   <a href="nos-valeurs.html">Nos valeurs</a>
   <a href="avis-clients.html">Avis clients</a>
   <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="drawer-cta">Conseil gratuit</a>
 </div>
+
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">Changer<span>de</span>Vie</a>
   <div class="nav-right">
     <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="nav-cta">Conseil gratuit</a>
-    <button class="hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <section class="page-hero">
-  <div style="position:absolute;inset:0;background-image:url('header_qui-sommes-nous.png');background-size:cover;background-position:center 35%;z-index:0"></div><div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(253,250,246,0.6) 0%,rgba(253,250,246,0.82) 50%,rgba(253,250,246,1) 100%);z-index:1"></div><div style="position:relative;z-index:2">
-  <span class="eyebrow">Derrière le projet</span>
-  <h1>Qui <em>sommes-nous</em> ?</h1>
+  <div class="page-hero-bg" style="background-image:url('header_qui-sommes-nous.png')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="eyebrow">Derrière le projet</span>
+    <h1>Qui <em>sommes-nous</em> ?</h1>
+    
+  </div>
 </section>
-
 <div class="content-block">
   <div class="portrait-wrap">
     <div class="portrait-img">Photo<br>à venir</div>
@@ -81,36 +114,46 @@
       <p style="color:var(--muted);font-size:0.93rem;line-height:1.92">J'ai créé ChangerDeVie.com car j'ai moi-même vécu le flou et la souffrance intérieure d'une transition non accompagnée.</p>
     </div>
   </div>
-
   <div class="story">
     <p>Toujours bonne élève, j'ai obtenu en 2018 mon diplôme d'ingénieur dans le top 10 de ma promotion, puis évolué dans une multinationale en France et en expatriation. J'ai acheté mon appartement, enchaîné les promotions, été identifiée comme future General Manager. Pourtant, malgré les changements de postes, de pays, de salaire, une souffrance intérieure était toujours présente — je performais, mais je n'étais pas heureuse.</p>
     <p>Cette incompréhension, mêlée à de la culpabilité, créait un mélange explosif d'émotions. Pour trouver une explication rationnelle, je cherchais les responsables : les managers, les processus, le modèle économique… Autour de moi, personne ne comprenait ce que je ressentais. J'ai fini par imploser. J'ai établi mon plan de sortie, ma stratégie financière, puis j'ai démissionné — avec la décision de repartir d'une feuille blanche.</p>
     <p>Dans mon mail d'au revoir, j'ai annoncé, avec une persuasion alors injustifiée : <em>« Je deviendrai une entrepreneuse pieds nus, parcourant le monde en gagnant sa vie simplement en faisant le bien pour les autres. »</em></p>
     <p>J'ai pris une année sabbatique, voyagé en suivant uniquement mon intuition. J'ai commencé à m'éduquer sur les émotions, la quête de sens, le fonctionnement de l'humain. J'ai exploré et testé différents projets entrepreneuriaux — séjours sportifs, coaching en sports extrêmes pour public féminin... Puis j'ai rencontré un mécène avec qui j'ai coconstruit Rise with the Wind : un programme de formation pour femmes de milieu désavantagé pour devenir instructrices de kitesurf, dans des pays en développement.</p>
     <p>J'étais devenue l'entrepreneuse que j'avais visualisée. J'étais heureuse ET performante. Ma vie professionnelle était devenue fluide, plaisante, financièrement stable.</p>
-    <p>Mes proches ont alors commencé à me demander conseil. Mais je ne me sentais pas équipée — ce qui avait marché pour moi n'allait pas forcément fonctionner pour d'autres. Y avait-il une méthodologie réplicable pour que chacun trouve ses propres réponses ? C'est ainsi que je me suis formée au Bilan de Compétences.</p>
+    <p>Mes proches ont alors commencé à me demander conseil. Mais je ne me sentais pas équipée — ce qui avait marché pour moi n'allait pas forcément fonctionner pour d'autres. C'est ainsi que je me suis formée au Bilan de Compétences.</p>
   </div>
-
   <div class="quote-block">
     <p>« Si vous prenez rendez-vous pour un conseil, c'est avec notre conseillère formée que vous échangerez. Son rôle n'est pas de vous vendre quelque chose — c'est de comprendre où vous en êtes, et de vous orienter honnêtement vers ce qui peut vous aider. »</p>
   </div>
-
   <div class="story">
-    <p>ChangerDeVie est né de la conviction qu'une personne qui a besoin de changement sera mieux accompagnée par une communauté d'experts qu'une seule personne ou des experts travaillant en silo. J'ai constitué un réseau de 24 professionnels partageant cette vision et ces valeurs, triés sur le volet pour leur excellence et leur dimension humaine — pour apporter le soutien que j'aurais aimé avoir au cours de mon propre parcours.</p>
+    <p>ChangerDeVie est né de la conviction qu'une personne qui a besoin de changement sera mieux accompagnée par une communauté d'experts qu'une seule personne ou des experts travaillant en silo. J'ai constitué un réseau de 24 professionnels partageant cette vision et ces valeurs, triés sur le volet pour leur excellence et leur dimension humaine.</p>
   </div>
-
   <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="btn-primary" style="margin-top:2rem">Réserver mon conseil gratuit</a>
 </div>
 
 <footer>
   <div class="footer-logo">ChangerDeVie</div>
-  <a href="index.html" class="footer-link">← Retour à l'accueil</a>
-  <div class="footer-link">© 2026</div>
+  <div class="footer-links">
+    <a href="qui-sommes-nous.html" class="footer-link">Qui sommes-nous</a>
+    <a href="nos-experts.html" class="footer-link">Nos experts</a>
+    <a href="nos-valeurs.html" class="footer-link">Nos valeurs</a>
+    <a href="avis-clients.html" class="footer-link">Avis clients</a>
+  </div>
+  <div class="footer-link">© 2026 ChangerDeVie</div>
 </footer>
 
 <script>
-  function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');document.getElementById('overlay').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open')}
-  function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
+  // drawer
+  function toggleDrawer() {
+    document.getElementById('drawer').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+  }
+  function closeDrawer() {
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
 </script>
 </body>
 </html>
