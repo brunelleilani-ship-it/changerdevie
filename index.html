@@ -73,9 +73,9 @@
   .step:hover .step-dot, .step.active .step-dot { background: var(--sand); color: var(--warm-white); transform: scale(1.15); box-shadow: 0 0 0 8px rgba(212,191,160,0.2); border-color: var(--stone); }
   .step[data-index="0"] .step-dot { background: #F0E8DC; border-color: #C9AA88; }
   .step[data-index="0"]:hover .step-dot, .step[data-index="0"].active .step-dot { background: #C9AA88; color: var(--warm-white); }
-  .step-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.5rem; }
-  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--charcoal); line-height: 1.3; margin-bottom: 0.7rem; }
-  .step-signal { font-size: 0.85rem; font-style: italic; color: var(--muted); line-height: 1.6; margin-bottom: 0.8rem; min-height: 4em; }
+  .step-tag { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.25rem; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 0.92rem; font-weight: 400; color: var(--stone); line-height: 1.3; margin-bottom: 0.9rem; font-style: italic; }
+  .step-signal { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--charcoal); line-height: 1.45; margin-bottom: 0.8rem; min-height: 4em; font-style: normal; }
   .step-experts { font-size: 0.73rem; color: var(--stone); border-top: 1px solid rgba(212,191,160,0.4); padding-top: 0.7rem; margin-top: auto; width: 100%; line-height: 1.8; }
 
   /* ── DETAIL PANEL ── */
@@ -145,6 +145,7 @@
 <!-- DRAWER -->
 <div class="drawer" id="drawer">
   <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  <a href="vous-reconnaissez-vous.html">Vous reconnaissez-vous ?</a>
   <a href="qui-sommes-nous.html">Qui sommes-nous</a>
   <a href="nos-experts.html">Nos experts</a>
   <a href="nos-valeurs.html">Nos valeurs</a>
@@ -170,7 +171,7 @@
     <p class="hero-eyebrow">Changer de vie entouré par de vrais experts sélectionnés</p>
     <h1>Et si le moment était venu<br>de reprendre les <em>rênes</em><br>de votre vie ?</h1>
     <span class="ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
-    <p class="hero-sub">Vous sentez que quelque chose doit changer. Mais vous ne savez pas par où commencer. Nos experts sélectionnés sont là pour vous aider.</p>
+    <p class="hero-sub">Vous sentez que quelque chose doit changer. Mais vous ne savez pas par où commencer. Notre collectif d'experts sélectionnés est là pour vous aider.</p>
     <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="btn-primary">Réserver mon conseil gratuit</a>
     <p class="hero-note">Ou <a href="#contact">décrivez-nous votre situation par écrit →</a></p>
   </div>
@@ -190,50 +191,58 @@
 
     <div class="step" data-index="0" onclick="toggleStep(0)">
       <div class="step-dot-wrap"><div class="step-dot">✦</div></div>
+      <p class="step-signal">« J'ai un brouillard mental permanent. Je n'ai plus l'énergie d'y voir clair. »</p>
       <p class="step-tag">Avant tout</p>
-      <h3 class="step-title">Reprendre<br>son souffle</h3>
-      <p class="step-signal">« Je suis épuisé(e). Je n'ai plus l'énergie de réfléchir à quoi que ce soit. »</p>
-      <div class="step-experts">Psychologue · Sophrologue<br>Shiatsu · Kinésiologie · Yoga</div>
+      <h3 class="step-title">Reprendre son souffle — C'est la condition pour créer les bonnes conditions d'un changement efficace</h3>
+      <div class="step-experts">Sophro · Yoga · Shiatsu · Hypnose<br>Reiki · Kinésio · Naturo</div>
     </div>
 
     <div class="step" data-index="1" onclick="toggleStep(1)">
       <div class="step-dot-wrap"><div class="step-dot">1</div></div>
+      <p class="step-signal">« Je sais que quelque chose doit changer. Mais je ne sais pas quoi, ni par où commencer. »</p>
       <p class="step-tag">Clarifier</p>
-      <h3 class="step-title">Définir<br>son cap</h3>
-      <p class="step-signal">« Je sais ce que je dois changer mais je suis dans le flou — je n'arrive pas à cerner ce que je veux vraiment. »</p>
-      <div class="step-experts">Bilan de compétences<br>Conseil en évolution professionnelle</div>
+      <h3 class="step-title">Définir son cap</h3>
+      <div class="step-experts">Bilan de compétences</div>
     </div>
 
     <div class="step" data-index="2" onclick="toggleStep(2)">
       <div class="step-dot-wrap"><div class="step-dot">2</div></div>
+      <p class="step-signal">« J'aimerais bouger mais j'ai peur de prendre un risque financier que je ne maîtrise pas. »</p>
       <p class="step-tag">Sécuriser</p>
-      <h3 class="step-title">Construire sa<br>stratégie financière</h3>
-      <p class="step-signal">« Je ne me suis jamais penchée sérieusement sur ma situation financière — pourtant je sens que ça pourrait m'aider dans mes changements de vie. »</p>
+      <h3 class="step-title">Construire sa stratégie financière</h3>
       <div class="step-experts">Conseiller en gestion de patrimoine</div>
     </div>
 
     <div class="step" data-index="3" onclick="toggleStep(3)">
       <div class="step-dot-wrap"><div class="step-dot">3</div></div>
+      <p class="step-signal">« J'ai mon idée. Mais entre l'envie et le saut, je ne sais pas comment construire. »</p>
       <p class="step-tag">Créer</p>
-      <h3 class="step-title">Lancer<br>son activité</h3>
-      <p class="step-signal">« Mon projet est clair — mais je ne sais pas comment structurer et naviguer le parcours de l'entrepreneur. »</p>
-      <div class="step-experts">Conseiller en création d'entreprise<br>Accompagnement VAE</div>
+      <h3 class="step-title">Lancer son activité</h3>
+      <div class="step-experts">Conseiller en création d'entreprise</div>
     </div>
 
     <div class="step" data-index="4" onclick="toggleStep(4)">
       <div class="step-dot-wrap"><div class="step-dot">4</div></div>
+      <p class="step-signal">« Je veux être reconnue à ma juste valeur. »</p>
       <p class="step-tag">Se réorienter</p>
-      <h3 class="step-title">Se réorienter,<br>changer d'entreprise</h3>
-      <p class="step-signal">« Je veux valoriser mon expérience, me repositionner — ou tout simplement partir vers autre chose qui me ressemble davantage. »</p>
-      <div class="step-experts">VAE · Outplacement<br>Conseil en évolution professionnelle</div>
+      <h3 class="step-title">Nouveau chapitre</h3>
+      <div class="step-experts">VAE · CEP</div>
     </div>
 
     <div class="step" data-index="5" onclick="toggleStep(5)">
       <div class="step-dot-wrap"><div class="step-dot">5</div></div>
+      <p class="step-signal">« Je veux partir. Mais je ne peux pas me permettre de sauter dans le vide. »</p>
+      <p class="step-tag">Rebondir</p>
+      <h3 class="step-title">Changer d'entreprise</h3>
+      <div class="step-experts">Outplacement · Bilan de compétences</div>
+    </div>
+
+    <div class="step" data-index="6" onclick="toggleStep(6)">
+      <div class="step-dot-wrap"><div class="step-dot">6</div></div>
+      <p class="step-signal">« J'avance. Mais seul(e), je sens que je vais me perdre en chemin. »</p>
       <p class="step-tag">Ancrer</p>
-      <h3 class="step-title">Tenir le cap,<br>se renforcer</h3>
-      <p class="step-signal">« J'avance ! Mais j'aimerais être aidé(e) pour garder le cap ou me renforcer sur des points précis. »</p>
-      <div class="step-experts">Coachs spécialisés<br>(prise de parole, leadership, confiance…)</div>
+      <h3 class="step-title">Tenir le cap</h3>
+      <div class="step-experts">Coaching ciblé · Suivi personnalisé</div>
     </div>
 
   </div>
@@ -261,19 +270,19 @@
   <div class="testimonials-track">
     <div class="testimonial-card">
       <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-quote">« J'ai fait mon Bilan de Compétences avec Leilani. J'ai appris bien plus sur moi ! Ça a vraiment été une expérience qui a changé ma vie. »</p>
+      <p class="testimonial-quote">« J'ai fait mon Bilan de Compétences avec Leilani. J'ai appris bien plus qu'attendu sur moi-même et ça a apporté des effets positifs très concrets sur ma situation professionnelle ! Mon seul regret ? D'avoir hésité et de ne pas l'avoir fait avant. »</p>
       <p class="testimonial-name">Barbara</p>
       <p class="testimonial-context">Secrétaire médicale · +20% de salaire en quelques semaines</p>
     </div>
     <div class="testimonial-card">
       <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-quote">« À 58 ans, mon Bilan avec Leilani était le 3ème — et le plus transformateur. J'ai enfin trouvé la direction qui me correspond vraiment. »</p>
+      <p class="testimonial-quote">« À 58 ans, mon Bilan avec Leilani était le 3ème — et le plus transformateur. J'ai découvert une direction que je ne connaissais pas et établi un plan concret pour finaliser ma fin de carrière. »</p>
       <p class="testimonial-name">Pascal, 58 ans</p>
-      <p class="testimonial-context">Retour en métropole après 15 ans à Tahiti · Projet ESS en cours</p>
+      <p class="testimonial-context">Réorientation en ESS · Activité parallèle dans le canin en cours</p>
     </div>
     <div class="testimonial-card">
       <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-quote">« Au cours du bilan, j'ai appris énormément sur moi, regagné en confiance et transformé mes points faibles en atouts. »</p>
+      <p class="testimonial-quote">« J'ai appris énormément sur moi et transformé ce que je pensais être des points faibles en atouts. En plus, cet accompagnement hyper profond ne m'a rien coûté — c'était finançable par mon CPF ! »</p>
       <p class="testimonial-name">Morgane</p>
       <p class="testimonial-context">Chef de projet IT · Déménagée à Tahiti, salaire au-dessus de ses attentes</p>
     </div>
@@ -286,7 +295,8 @@
 <!-- CTA -->
 <section class="cta-section" id="call">
   <h2>Pas sûr(e) de savoir<br><em>où vous en êtes</em> ?</h2>
-  <p>En 30 minutes, nous identifions ensemble votre point de départ et vous orientons vers les experts qui vous correspondent — parmi notre sélection rigoureuse de 24 professionnels choisis pour leur haute performance et leur dimension humaine.</p>
+  <p>Vous avez une envie de changement, des doutes que vous n'arrivez pas encore à formuler clairement. C'est le point de départ de cet appel.</p>
+  <p style="max-width:480px;margin:0.8rem auto 2.4rem;color:var(--muted);font-size:0.95rem;line-height:1.85">Vous avez une envie de changement que vous n'arrivez pas encore à formuler clairement. C'est le point de départ de cet appel.<br><br>En 30 minutes, vous partagez librement où vous en êtes. Vous repartez avec une action concrète, gratuite, définie ensemble, pour une première impulsion vers plus de clarté et de bien-être.<br><br>Si cela fait sens, nous vous orientons vers un expert qui pourrait vous aider.</p>
   <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="btn-primary">Réserver mon conseil gratuit</a>
   <p class="cta-note">Sans engagement · Confidentiel · Avec notre conseillère formée</p>
 </section>
@@ -329,12 +339,13 @@
 
   // timeline
   const details = [
-    { num: '✦', title: 'Reprendre son souffle', text: "Il faut être dans de bonnes conditions pour initier un changement de vie efficace. En fonction de ce que vous exprimez, nous vous faisons découvrir des pratiques bien-être qui pourraient vous convenir et pouvons vous conseiller des praticiens dont les retours clients sont élogieux.", expert: "Psychologues spécialisé burn-out, sophrologues, naturopathes, kinésiologues, praticiens shiatsu, professeurs de yoga…" },
-    { num: '1', title: 'Définir son cap', text: "Quand on ne sait plus où l'on va, un bilan de compétences offre un espace rare : celui de se retrouver soi-même, pour passer du doute à la clarté. En explorant ses valeurs, ses talents et ses aspirations profondes, on dessine un projet de vie concret, cohérent et réaliste.", expert: "Nous vous orientons vers le consultant en bilan de compétences ou conseiller CEP dont l'approche correspond à votre profil et situation, éligibles CPF ou gratuits." },
-    { num: '2', title: 'Construire sa stratégie financière', text: "Changer de vie ou l'améliorer, c'est aussi l'opportunité parfaite de faire le point sur sa situation financière personnelle et d'établir une stratégie adaptée à ses nouveaux objectifs. Tout est possible avec la bonne stratégie — et nous méconnaissons souvent de nombreux outils à notre disposition.", expert: "Nous vous mettons en relation avec un conseiller en gestion de patrimoine indépendant, sélectionné pour son expertise des transitions de vie et sa pédagogie." },
-    { num: '3', title: 'Lancer son activité', text: "Le projet est clair, votre situation financière clarifiée — il est temps de construire. Si vous ressentez le besoin d'être accompagné(e) dans le parcours parfois tortueux de l'entrepreneur, nous pouvons vous aider.", expert: "Nous vous orientons vers nos conseillers en création d'entreprise, sélectionnés pour leurs réussites — et vers un accompagnateur VAE si votre expérience mérite d'être certifiée." },
-    { num: '4', title: 'Se réorienter, changer d\'entreprise', text: "Parfois, le changement passe par un repositionnement professionnel ou la valorisation de son expérience. La VAE permet de faire reconnaître officiellement vos acquis. L'outplacement est un outil puissant pour une transition efficace — et il peut être financé par votre employeur.", expert: "Nous vous orientons vers un accompagnateur VAE, un conseiller CEP ou un coach en outplacement selon votre situation et vos objectifs." },
-    { num: '5', title: 'Tenir le cap, se renforcer', text: "Le changement est lancé — mais l'aventure ne s'arrête pas là. Peut-être avez-vous identifié des lacunes précises à combler : apprendre à vous vendre, prendre la parole en public, renforcer votre leadership. C'est ici que la transformation devient durable.", expert: "Nous vous orientons vers des coachs ou experts spécialisés qui correspondent exactement à vos besoins identifiés." }
+    { num: '✦', title: 'Reprendre son souffle', text: "C'est la condition pour créer les bonnes conditions d'un changement efficace. Avant de prendre une quelconque décision, il faut d'abord retrouver un ancrage. En fonction de ce que vous exprimez, nous vous recommandons des praticiens dont les retours clients sont élogieux.\n\nAttention : si vous êtes en burn-out ou nécessitez un suivi médical, vous serez redirigé(e). Ces recommandations ne se substituent pas à un suivi médical.", expert: "Sophrologues · Professeurs de yoga · Praticiens shiatsu · Hypnothérapeutes · Thérapeutes en reiki · Kinésiologues · Naturopathes" },
+    { num: '1', title: 'Définir son cap', text: "Vous savez que quelque chose doit changer — mais le brouillard est total. Vous tournez en rond, vous n'arrivez pas à nommer ce que vous voulez vraiment. Un bilan de compétences offre un espace rare : celui de se retrouver soi-même, pour passer du doute à la clarté.", expert: "Nous vous orientons vers un consultant en bilan de compétences dont l'approche et la personnalité correspondent à votre profil." },
+    { num: '2', title: 'Construire sa stratégie financière', text: "Changer de vie peut s'avérer bien plus facile — ou amplifié — avec une stratégie financière réfléchie et solide. Nous méconnaissons souvent de nombreux outils à notre disposition ! C'est peut-être le moment idéal de s'y poser sérieusement pour construire une stratégie alignée avec vos objectifs.", expert: "Nous vous mettons en relation avec un conseiller en gestion de patrimoine indépendant, sélectionné pour son expertise des transitions de vie et sa pédagogie." },
+    { num: '3', title: 'Lancer son activité', text: "Le projet est clair, l'envie est là. Mais entre l'idée et la réalité de l'entrepreneur, il y a un parcours semé d'embûches administratives, juridiques, financières. Être bien accompagné à ce stade change tout.", expert: "Nous vous orientons vers des conseillers en création d'entreprise sélectionnés pour leurs réussites." },
+    { num: '4', title: 'Nouveau chapitre', text: "Vous avez identifié que vous aviez des compétences, mais que le marché ne vous reconnaît pas à votre juste valeur. La VAE permet de faire certifier officiellement ce que vous savez faire pour booster votre carrière. Le CEP identifie la formation qu'il vous manque pour la bifurcation que vous avez mûrie et choisie — et vous oriente vers la formation qui vous manque pour votre projet.", expert: "Nous vous orientons vers un accompagnateur VAE, ou vers un conseiller CEP pour exécuter votre évolution ou réorientation professionnelle." },
+    { num: '5', title: 'Changer d\'entreprise', text: "L'envie de partir est claire. Mais comment se repositionner efficacement ? Comment valoriser ce que vous avez accompli ? L'outplacement est un outil puissant et méconnu pour réussir cette transition — et dans certains cas, il peut être financé par votre employeur.", expert: "Nous vous orientons vers nos conseillers en outplacement pour une transition professionnelle structurée et efficace." },
+    { num: '6', title: 'Tenir le cap', text: "Vous avancez — c'est déjà énorme. Mais certains points précis vous freinent encore : comment vous vendre, prendre la parole, affirmer votre leadership. C'est ici que la transformation devient durable.", expert: "Nous vous orientons vers des coachs spécialisés qui correspondent exactement à vos besoins : prise de parole, leadership, confiance en soi, gestion du temps…" }
   ];
 
   let current = -1;

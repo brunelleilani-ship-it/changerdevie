@@ -31,8 +31,7 @@
   .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted)}
   .footer-link{font-size:0.72rem;color:var(--muted);text-decoration:none}
 
-  .page-hero{padding:10rem 2rem 5rem;text-align:center;background:linear-gradient(160deg,var(--warm-white) 60%,var(--sand-lt) 100%)}
-  .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:var(--charcoal)}
+  .page-hero{padding:10rem 2rem 5rem;text-align:center;position:relative;overflow:hidden;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:var(--charcoal)}
   .page-hero h1 em{font-style:italic;color:var(--stone)}
   .page-hero p{max-width:520px;margin:1.5rem auto 0;color:var(--muted);font-size:0.95rem;line-height:1.85;font-style:italic}
   .values-wrap{max-width:760px;margin:0 auto;padding:5rem 2rem 6rem}
@@ -53,6 +52,7 @@
 <div class="drawer" id="drawer">
   <button class="drawer-close" onclick="closeDrawer()">✕</button>
   <a href="index.html">Accueil</a>
+  <a href="vous-reconnaissez-vous.html">Vous reconnaissez-vous ?</a>
   <a href="qui-sommes-nous.html">Qui sommes-nous</a>
   <a href="nos-experts.html">Nos experts</a>
   <a href="avis-clients.html">Avis clients</a>
@@ -67,9 +67,10 @@
 </nav>
 
 <section class="page-hero">
+  <div style="position:absolute;inset:0;background-image:url('header_nos-valeurs.jpg');background-size:cover;background-position:center 35%;z-index:0"></div><div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(253,250,246,0.6) 0%,rgba(253,250,246,0.82) 50%,rgba(253,250,246,1) 100%);z-index:1"></div><div style="position:relative;z-index:2">
   <span class="eyebrow">Ce qui nous guide</span>
   <h1>Nos <em>valeurs</em></h1>
-  <p>Notre éthique est stricte, car centrée sur le besoin de l'autre avant tout. Tous nos experts partagent ces engagements et s'y sont engagés.</p>
+  <p>Notre éthique est stricte, car centrée sur le besoin de l'autre avant tout. Tous nos experts partagent ces engagements et s'y sont engagés.</div>
 </section>
 
 <div class="values-wrap">
