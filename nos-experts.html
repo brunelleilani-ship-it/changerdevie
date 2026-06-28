@@ -6,89 +6,75 @@
 <title>Nos Experts — ChangerDeVie</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --sand: #D4BFA0; --sand-lt: #EDE3D4; --cream: #F7F3EE; --warm-white: #FDFAF6; --stone: #9C8670; --charcoal: #3A3028; --text: #4A3F35; --muted: #8C7B6E; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--warm-white); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
-
-  /* ── NAV ── */
-  nav { position: fixed; top: 0; width: 100%; z-index: 200; padding: 1.1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; background: rgba(253,250,246,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(212,191,160,0.3); }
-  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; letter-spacing: 0.08em; color: var(--charcoal); text-decoration: none; }
-  .nav-logo span { color: var(--stone); }
-  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
-  .nav-cta { display: inline-block; padding: 0.6rem 1.4rem; background: var(--charcoal); color: var(--warm-white); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
-  .nav-cta:hover { background: var(--stone); }
-
-  /* hamburger */
-  .hamburger { cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 4px; background: none; border: none; }
-  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); transition: all 0.3s; }
-  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-  /* drawer */
-  .drawer { position: fixed; top: 0; right: -320px; width: 300px; height: 100vh; background: var(--warm-white); z-index: 300; padding: 5rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 0; transition: right 0.35s ease; box-shadow: -4px 0 30px rgba(0,0,0,0.08); border-left: 1px solid rgba(212,191,160,0.3); }
-  .drawer.open { right: 0; }
-  .drawer-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; cursor: pointer; font-size: 1.4rem; color: var(--muted); }
-  .drawer a { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--charcoal); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(212,191,160,0.2); transition: color 0.2s; }
-  .drawer a:hover { color: var(--stone); }
-  .drawer a.drawer-cta { margin-top: 1.5rem; border: none; display: inline-block; padding: 0.9rem 1.6rem; background: var(--charcoal); color: var(--warm-white); font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; }
-  .drawer a.drawer-cta:hover { background: var(--stone); }
-  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 250; display: none; }
-  .overlay.open { display: block; }
-
-
-
-
-  /* SHARED PAGE STYLES */
-  .eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); display: block; margin-bottom: 0.8rem; }
-  .btn-primary { display: inline-block; padding: 1rem 2.4rem; background: var(--charcoal); color: var(--warm-white); font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: background 0.25s; border: none; cursor: pointer; }
-  .btn-primary:hover { background: var(--stone); }
-  .page-hero { padding: 10rem 2rem 5rem; text-align: center; position: relative; overflow: hidden; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: var(--sand-lt); }
-  .page-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center 35%; z-index: 0; }
-  .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(253,250,246,0.55) 0%, rgba(253,250,246,0.80) 50%, rgba(253,250,246,1) 100%); z-index: 1; }
-  .page-hero-content { position: relative; z-index: 2; }
-  .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 300; color: var(--charcoal); line-height: 1.15; margin-bottom: 1rem; }
-  .page-hero h1 em { font-style: italic; color: var(--stone); }
-  .page-hero p { max-width: 580px; margin: 0 auto; color: var(--muted); font-size: 0.95rem; line-height: 1.9; }
-  footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(212,191,160,0.3); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--muted); }
-  .footer-link { font-size: 0.72rem; color: var(--muted); text-decoration: none; }
-  .footer-link:hover { color: var(--charcoal); }
-  @media (max-width: 768px) { nav { padding: 1rem 1.4rem; } footer { flex-direction: column; text-align: center; } }
-
-  .manifeste { max-width: 760px; margin: 3rem auto 0; padding: 0 2rem; }
-  .manifeste-inner { border-left: 3px solid var(--sand); padding-left: 2rem; }
-  .manifeste p { color: var(--muted); font-size: 0.95rem; line-height: 1.95; margin-bottom: 0.9rem; }
-  .manifeste p strong { color: var(--charcoal); font-weight: 500; }
-  .selection { background: var(--cream); border: 1px solid rgba(212,191,160,0.4); max-width: 760px; margin: 2.5rem auto 0; padding: 2.4rem 3rem; }
-  .selection h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--charcoal); margin-bottom: 1.2rem; }
-  .criteria { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem 2rem; }
-  .criterion { display: flex; gap: 0.7rem; align-items: flex-start; font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
-  .criterion-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sand); flex-shrink: 0; margin-top: 0.55rem; }
-  .experts-section { padding: 3.5rem 2rem 2rem; max-width: 1060px; margin: 0 auto; }
-  .experts-section > p { text-align: center; color: var(--muted); font-size: 0.88rem; font-style: italic; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-  .experts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.8rem; }
-  .expert-card { background: var(--cream); border: 1px solid rgba(212,191,160,0.4); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
-  .expert-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(58,48,40,0.07); }
-  .expert-photo { width: 100%; height: 190px; background: var(--sand-lt); display: flex; align-items: center; justify-content: center; }
-  .expert-photo span { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); text-align: center; }
-  .expert-info { padding: 1.6rem 1.8rem; }
-  .expert-domain { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.3rem; }
-  .expert-name { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.25rem; }
-  .expert-rating { font-size: 0.78rem; color: var(--sand); letter-spacing: 0.05em; margin-bottom: 0.9rem; }
-  .expert-bio { font-size: 0.85rem; color: var(--muted); line-height: 1.8; }
-  .expert-tag { display: inline-block; margin-top: 0.9rem; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); border: 1px solid rgba(212,191,160,0.5); padding: 0.2rem 0.7rem; border-radius: 10px; }
-  .cta-block { text-align: center; padding: 4rem 2rem 5rem; background: var(--sand-lt); margin-top: 3rem; }
-  .cta-block h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; color: var(--charcoal); margin-bottom: 0.8rem; }
-  .cta-block h2 em { font-style: italic; color: var(--stone); }
-  .cta-block p { color: var(--muted); max-width: 500px; margin: 0 auto 2rem; font-size: 0.92rem; line-height: 1.85; }
-  @media (max-width: 768px) { .criteria { grid-template-columns: 1fr; } .selection { padding: 1.8rem; } }
-
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--sand:#D4BFA0;--sand-lt:#EDE3D4;--cream:#F7F3EE;--warm-white:#FDFAF6;--stone:#9C8670;--charcoal:#3A3028;--text:#4A3F35;--muted:#8C7B6E}
+  html{scroll-behavior:smooth}
+  body{background:var(--warm-white);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7}
+  nav{position:fixed;top:0;width:100%;z-index:200;padding:1.1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(253,250,246,0.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(212,191,160,0.3)}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;letter-spacing:0.08em;color:var(--charcoal);text-decoration:none}
+  .nav-logo span{color:var(--stone)}
+  .nav-right{display:flex;align-items:center;gap:1.5rem}
+  .nav-cta{display:inline-block;padding:0.6rem 1.4rem;background:var(--charcoal);color:var(--warm-white);font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
+  .nav-cta:hover{background:var(--stone)}
+  .hamburger{cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px;background:none;border:none}
+  .hamburger span{display:block;width:22px;height:1.5px;background:var(--charcoal);transition:all 0.3s}
+  .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+  .drawer{position:fixed;top:0;right:-320px;width:300px;height:100vh;background:var(--warm-white);z-index:300;padding:5rem 2.5rem 3rem;display:flex;flex-direction:column;transition:right 0.35s ease;box-shadow:-4px 0 30px rgba(0,0,0,0.08);border-left:1px solid rgba(212,191,160,0.3)}
+  .drawer.open{right:0}
+  .drawer-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;cursor:pointer;font-size:1.4rem;color:var(--muted)}
+  .drawer a{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--charcoal);text-decoration:none;padding:0.9rem 0;border-bottom:1px solid rgba(212,191,160,0.2);transition:color 0.2s}
+  .drawer a:hover{color:var(--stone)}
+  .drawer a.drawer-cta{margin-top:1.5rem;border:none;display:inline-block;padding:0.9rem 1.6rem;background:var(--charcoal);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-align:center}
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:250;display:none}
+  .overlay.open{display:block}
+  .eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:0.8rem}
+  .btn-primary{display:inline-block;padding:1rem 2.4rem;background:var(--charcoal);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.25s}
+  .btn-primary:hover{background:var(--stone)}
+  .btn-secondary{display:inline-block;padding:0.85rem 2rem;border:1px solid var(--sand);color:var(--charcoal);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all 0.25s}
+  .btn-secondary:hover{background:var(--sand-lt)}
+  .page-hero{padding:10rem 2rem 5rem;text-align:center;position:relative;overflow:hidden;min-height:340px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+  .page-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 35%;z-index:0}
+  .page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(253,250,246,0.25) 0%,rgba(253,250,246,0.45) 55%,rgba(253,250,246,1) 100%);z-index:1}
+  .page-hero-content{position:relative;z-index:2}
+  .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:300;color:var(--charcoal);line-height:1.15;margin-bottom:1rem}
+  .page-hero h1 em{font-style:italic;color:var(--stone)}
+  .page-hero p{max-width:580px;margin:0 auto;color:var(--muted);font-size:0.95rem;line-height:1.9}
+  .manifeste{max-width:760px;margin:3.5rem auto 0;padding:0 2rem}
+  .manifeste-inner{border-left:3px solid var(--sand);padding-left:2rem}
+  .manifeste p{color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:0.9rem}
+  .manifeste p strong{color:var(--charcoal);font-weight:500}
+  .selection{background:var(--cream);border:1px solid rgba(212,191,160,0.4);max-width:760px;margin:2.5rem auto 0;padding:2.4rem 3rem}
+  .selection h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--charcoal);margin-bottom:1.2rem}
+  .criteria{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem 2rem}
+  .criterion{display:flex;gap:0.7rem;align-items:flex-start;font-size:0.85rem;color:var(--muted);line-height:1.6}
+  .criterion-dot{width:5px;height:5px;border-radius:50%;background:var(--sand);flex-shrink:0;margin-top:0.55rem}
+  .experts-section{padding:3.5rem 2rem 2rem;max-width:1060px;margin:0 auto}
+  .experts-section > p{text-align:center;color:var(--muted);font-size:0.88rem;font-style:italic;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto}
+  .experts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.8rem}
+  .expert-card{background:var(--cream);border:1px solid rgba(212,191,160,0.4);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s}
+  .expert-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(58,48,40,0.07)}
+  .expert-photo{width:100%;height:190px;background:var(--sand-lt);display:flex;align-items:center;justify-content:center}
+  .expert-photo span{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);text-align:center}
+  .expert-info{padding:1.6rem 1.8rem}
+  .expert-domain{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);margin-bottom:0.3rem}
+  .expert-name{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;color:var(--charcoal);margin-bottom:0.25rem}
+  .expert-rating{font-size:0.78rem;color:var(--sand);letter-spacing:0.05em;margin-bottom:0.9rem}
+  .expert-bio{font-size:0.85rem;color:var(--muted);line-height:1.8}
+  .expert-tag{display:inline-block;margin-top:0.9rem;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);border:1px solid rgba(212,191,160,0.5);padding:0.2rem 0.7rem;border-radius:10px}
+  .cta-block{text-align:center;padding:4rem 2rem 5rem;background:var(--sand-lt);margin-top:3rem}
+  .cta-block h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;color:var(--charcoal);margin-bottom:0.8rem}
+  .cta-block h2 em{font-style:italic;color:var(--stone)}
+  .cta-block p{color:var(--muted);max-width:500px;margin:0 auto 2rem;font-size:0.92rem;line-height:1.85}
+  .cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  footer{padding:2.5rem 3rem;border-top:1px solid rgba(212,191,160,0.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted)}
+  .footer-link{font-size:0.72rem;color:var(--muted);text-decoration:none}
+  @media(max-width:768px){nav{padding:1rem 1.4rem}.criteria{grid-template-columns:1fr}.selection{padding:1.8rem}footer{flex-direction:column;text-align:center}.cta-buttons{flex-direction:column;align-items:center}}
 </style>
 </head>
 <body>
-<!-- OVERLAY -->
 <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
   <button class="drawer-close" onclick="closeDrawer()">✕</button>
@@ -99,17 +85,13 @@
   <a href="nos-experts.html">Nos experts</a>
   <a href="nos-valeurs.html">Nos valeurs</a>
   <a href="avis-clients.html">Avis clients</a>
-  <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="drawer-cta">Conseil gratuit</a>
+  <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit" target="_blank" class="drawer-cta">Conseil gratuit</a>
 </div>
-
-<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">Changer<span>de</span>Vie</a>
   <div class="nav-right">
-    <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="nav-cta">Conseil gratuit</a>
-    <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit" target="_blank" class="nav-cta">Conseil gratuit</a>
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -122,23 +104,26 @@
     <p>Voici un aperçu de quelques-uns des experts que nous pourrions vous conseiller. Ce ne sont pas des profils recrutés sur une plateforme — ce sont des personnes que nous connaissons, dont nous avons vu le travail, et en qui nous avons confiance.</p>
   </div>
 </section>
+
 <div class="manifeste">
   <div class="manifeste-inner">
-    <p><strong>Le collectif ChangerDeVie n'est pas un annuaire d'experts.</strong> C'est un groupe restreint de professionnels qui partagent les mêmes valeurs et qui ont accepté de travailler ensemble, de façon coordonnée, pour vous accompagner.</p>
-    <p>Si votre parcours vous amène d'un bilan de compétences vers un conseiller financier, les deux experts peuvent — avec votre accord — se transmettre les éléments essentiels de votre situation. Vous ne repartez pas de zéro. <strong>Votre confidentialité est respectée à chaque étape.</strong></p>
+    <p><strong>Le collectif ChangerDeVie n'est pas un annuaire d'experts.</strong> C'est un groupe restreint de professionnels qui partagent les mêmes valeurs et qui travaillent ensemble, de façon coordonnée, pour vous accompagner.</p>
+    <p>Si votre parcours vous amène d'un bilan de compétences vers un conseiller financier, les deux experts peuvent — avec votre accord — échanger pour vous aider dans vos stratégies. Vous ne repartez pas de zéro, vous êtes entouré(e), personnellement. <strong>Votre confidentialité est respectée à chaque étape.</strong></p>
+    <p>Nos experts sont également sensibilisés à reconnaître les signes d'épuisement professionnel. Lorsque cela est nécessaire, ils s'engagent à orienter vers un professionnel médical — c'est inscrit dans notre charte éthique.</p>
   </div>
 </div>
 
 <div class="selection">
-  <h3>Comment nous les sélectionnons</h3>
+  <h3>Comment nous les sélectionnons — et ce que nous ne regardons pas</h3>
   <div class="criteria">
     <div class="criterion"><div class="criterion-dot"></div>Nous les connaissons personnellement — pas via une plateforme</div>
-    <div class="criterion"><div class="criterion-dot"></div>Minimum 4,5/5 d'avis clients vérifiés</div>
-    <div class="criterion"><div class="criterion-dot"></div>Expérience significative dans leur domaine</div>
-    <div class="criterion"><div class="criterion-dot"></div>Alignement éthique : l'intérêt du client avant le leur</div>
-    <div class="criterion"><div class="criterion-dot"></div>Capacité à travailler en collectif et à se coordonner</div>
-    <div class="criterion"><div class="criterion-dot"></div>Signature de la charte éthique du collectif</div>
+    <div class="criterion"><div class="criterion-dot"></div>Au moins 90% de leurs clients les recommanderaient à un ami avec une note ≥ 8/10</div>
+    <div class="criterion"><div class="criterion-dot"></div>Retours clients qualitatifs élogieux, vérifiés</div>
+    <div class="criterion"><div class="criterion-dot"></div>L'intérêt du client avant le leur — toujours</div>
+    <div class="criterion"><div class="criterion-dot"></div>Sensibilisés aux signes de burn-out, engagement d'orientation médicale si nécessaire</div>
+    <div class="criterion"><div class="criterion-dot"></div>Signature de la charte éthique du collectif (inclus RGPD)</div>
   </div>
+  <p style="margin-top:1.5rem;font-size:0.85rem;color:var(--muted);font-style:italic;border-top:1px solid rgba(212,191,160,0.3);padding-top:1rem">Nous ne choisissons pas nos experts sur le nombre de followers, les titres ou les posts LinkedIn. Nous pensons que la qualité d'un accompagnement ne se mesure pas au volume sonore. Beaucoup d'experts excellents n'aiment pas se vendre — ils sont sous les radars, peu visibles. C'est précisément pour cela que nous les dénichons pour vous.</p>
 </div>
 
 <section class="experts-section">
@@ -170,7 +155,7 @@
         <p class="expert-domain">Gestion de patrimoine</p>
         <h3 class="expert-name">Antoine</h3>
         <p class="expert-rating">★★★★★ &nbsp;4.7/5</p>
-        <p class="expert-bio">Conseiller en gestion de patrimoine indépendant, spécialisé dans les transitions professionnelles. Sa pédagogie démystifie la finance et révèle des leviers souvent méconnus — parfois décisifs pour un projet de vie.</p>
+        <p class="expert-bio">Conseiller en gestion de patrimoine indépendant, spécialisé dans les transitions professionnelles. Sa pédagogie démystifie la finance et révèle des leviers souvent méconnus.</p>
         <span class="expert-tag">Stratégie financière</span>
       </div>
     </div>
@@ -180,7 +165,7 @@
         <p class="expert-domain">Sophrologie · Bien-être</p>
         <h3 class="expert-name">Élodie</h3>
         <p class="expert-rating">★★★★★ &nbsp;4.9/5</p>
-        <p class="expert-bio">Sophrologue et praticienne en kinésiologie. Elle accompagne les personnes en période d'épuisement à retrouver leur ancrage corporel — condition souvent sous-estimée, et pourtant décisive, avant toute réflexion de fond.</p>
+        <p class="expert-bio">Sophrologue et praticienne en kinésiologie. Elle accompagne les personnes en période d'épuisement à retrouver leur ancrage corporel — condition souvent sous-estimée avant toute réflexion de fond.</p>
         <span class="expert-tag">Bien-être & Souffle</span>
       </div>
     </div>
@@ -191,32 +176,20 @@
   <span class="eyebrow">La bonne personne pour vous</span>
   <h2>Laissez-nous vous <em>conseiller</em>.</h2>
   <p>Ces profils ne sont qu'un aperçu. Ce qui compte, c'est de trouver l'expert dont l'approche et la personnalité correspondent à votre situation — pas à quelqu'un d'autre.</p>
-  <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="btn-primary">Réserver mon conseil gratuit</a>
+  <div class="cta-buttons">
+    <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit" target="_blank" class="btn-primary">Réserver mon conseil gratuit</a>
+    <a href="nos-valeurs.html" class="btn-secondary">Comprendre nos valeurs</a>
+  </div>
 </section>
 
 <footer>
   <div class="footer-logo">ChangerDeVie</div>
-  <div class="footer-links">
-    <a href="qui-sommes-nous.html" class="footer-link">Qui sommes-nous</a>
-    <a href="nos-experts.html" class="footer-link">Nos experts</a>
-    <a href="nos-valeurs.html" class="footer-link">Nos valeurs</a>
-    <a href="avis-clients.html" class="footer-link">Avis clients</a>
-  </div>
-  <div class="footer-link">© 2026 ChangerDeVie</div>
+  <a href="index.html" class="footer-link">← Retour à l'accueil</a>
+  <div class="footer-link">© 2026</div>
 </footer>
-
 <script>
-  // drawer
-  function toggleDrawer() {
-    document.getElementById('drawer').classList.toggle('open');
-    document.getElementById('overlay').classList.toggle('open');
-    document.getElementById('hamburger').classList.toggle('open');
-  }
-  function closeDrawer() {
-    document.getElementById('drawer').classList.remove('open');
-    document.getElementById('overlay').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('open');
-  }
+  function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');document.getElementById('overlay').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open')}
+  function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
 </script>
 </body>
 </html>

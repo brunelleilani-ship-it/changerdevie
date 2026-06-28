@@ -6,79 +6,72 @@
 <title>Avis Clients — ChangerDeVie</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --sand: #D4BFA0; --sand-lt: #EDE3D4; --cream: #F7F3EE; --warm-white: #FDFAF6; --stone: #9C8670; --charcoal: #3A3028; --text: #4A3F35; --muted: #8C7B6E; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--warm-white); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--sand:#D4BFA0;--sand-lt:#EDE3D4;--cream:#F7F3EE;--warm-white:#FDFAF6;--stone:#9C8670;--charcoal:#3A3028;--text:#4A3F35;--muted:#8C7B6E}
+  html{scroll-behavior:smooth}
+  body{background:var(--warm-white);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7}
+  nav{position:fixed;top:0;width:100%;z-index:200;padding:1.1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(253,250,246,0.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(212,191,160,0.3)}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;letter-spacing:0.08em;color:var(--charcoal);text-decoration:none}
+  .nav-logo span{color:var(--stone)}
+  .nav-right{display:flex;align-items:center;gap:1.5rem}
+  .nav-cta{display:inline-block;padding:0.6rem 1.4rem;background:var(--charcoal);color:var(--warm-white);font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
+  .nav-cta:hover{background:var(--stone)}
+  .hamburger{cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px;background:none;border:none}
+  .hamburger span{display:block;width:22px;height:1.5px;background:var(--charcoal);transition:all 0.3s}
+  .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+  .drawer{position:fixed;top:0;right:-320px;width:300px;height:100vh;background:var(--warm-white);z-index:300;padding:5rem 2.5rem 3rem;display:flex;flex-direction:column;transition:right 0.35s ease;box-shadow:-4px 0 30px rgba(0,0,0,0.08);border-left:1px solid rgba(212,191,160,0.3)}
+  .drawer.open{right:0}
+  .drawer-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;cursor:pointer;font-size:1.4rem;color:var(--muted)}
+  .drawer a{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--charcoal);text-decoration:none;padding:0.9rem 0;border-bottom:1px solid rgba(212,191,160,0.2);transition:color 0.2s}
+  .drawer a:hover{color:var(--stone)}
+  .drawer a.drawer-cta{margin-top:1.5rem;border:none;display:inline-block;padding:0.9rem 1.6rem;background:var(--charcoal);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-align:center}
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:250;display:none}
+  .overlay.open{display:block}
+  .eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:0.8rem}
+  .btn-primary{display:inline-block;padding:1rem 2.4rem;background:var(--charcoal);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.25s}
+  .btn-primary:hover{background:var(--stone)}
+  .btn-secondary{display:inline-block;padding:0.85rem 2rem;border:1px solid var(--sand);color:var(--charcoal);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all 0.25s}
+  .btn-secondary:hover{background:var(--sand-lt)}
 
-  /* ── NAV ── */
-  nav { position: fixed; top: 0; width: 100%; z-index: 200; padding: 1.1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; background: rgba(253,250,246,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(212,191,160,0.3); }
-  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; letter-spacing: 0.08em; color: var(--charcoal); text-decoration: none; }
-  .nav-logo span { color: var(--stone); }
-  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
-  .nav-cta { display: inline-block; padding: 0.6rem 1.4rem; background: var(--charcoal); color: var(--warm-white); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
-  .nav-cta:hover { background: var(--stone); }
+  .page-hero{padding:10rem 2rem 5rem;text-align:center;position:relative;overflow:hidden;min-height:320px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+  .page-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 40%;z-index:0}
+  .page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(253,250,246,0.25) 0%,rgba(253,250,246,0.45) 55%,rgba(253,250,246,1) 100%);z-index:1}
+  .page-hero-content{position:relative;z-index:2}
+  .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:300;color:var(--charcoal);line-height:1.15;margin-bottom:1rem}
+  .page-hero h1 em{font-style:italic;color:var(--stone)}
+  .page-hero p{max-width:580px;margin:0 auto;color:var(--muted);font-size:0.95rem;line-height:1.9}
 
-  /* hamburger */
-  .hamburger { cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 4px; background: none; border: none; }
-  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); transition: all 0.3s; }
-  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .contact-note{max-width:700px;margin:3rem auto 0;padding:1.5rem 2rem;background:var(--cream);border-left:3px solid var(--sand);font-size:0.88rem;color:var(--muted);font-style:italic;line-height:1.8}
+  .contact-note strong{color:var(--charcoal);font-style:normal}
 
-  /* drawer */
-  .drawer { position: fixed; top: 0; right: -320px; width: 300px; height: 100vh; background: var(--warm-white); z-index: 300; padding: 5rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 0; transition: right 0.35s ease; box-shadow: -4px 0 30px rgba(0,0,0,0.08); border-left: 1px solid rgba(212,191,160,0.3); }
-  .drawer.open { right: 0; }
-  .drawer-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; cursor: pointer; font-size: 1.4rem; color: var(--muted); }
-  .drawer a { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--charcoal); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(212,191,160,0.2); transition: color 0.2s; }
-  .drawer a:hover { color: var(--stone); }
-  .drawer a.drawer-cta { margin-top: 1.5rem; border: none; display: inline-block; padding: 0.9rem 1.6rem; background: var(--charcoal); color: var(--warm-white); font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; }
-  .drawer a.drawer-cta:hover { background: var(--stone); }
-  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 250; display: none; }
-  .overlay.open { display: block; }
+  .reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:2rem;max-width:1100px;margin:3rem auto;padding:0 2rem 5rem}
+  .review-card{background:var(--cream);padding:2.4rem}
+  .review-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem}
+  .review-avatar{width:52px;height:52px;border-radius:50%;background:var(--sand-lt);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--stone)}
+  .review-name{font-weight:500;font-size:0.9rem;color:var(--charcoal);letter-spacing:0.05em}
+  .review-stars{color:var(--sand);font-size:1.1rem;letter-spacing:0.06em;margin:0.2rem 0}
+  .review-tag{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone)}
+  .review-quote{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--charcoal);line-height:1.65;margin-bottom:1.4rem}
+  .review-story{border-top:1px solid rgba(212,191,160,0.4);padding-top:1.2rem}
+  .review-story-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--stone);margin-bottom:0.4rem}
+  .review-story p{font-size:0.82rem;color:var(--muted);line-height:1.8;margin-bottom:0.5rem}
+  .review-story strong{color:var(--charcoal);font-weight:500}
 
+  .cta-block{text-align:center;background:var(--sand-lt);padding:5rem 2rem}
+  .cta-block h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--charcoal);margin-bottom:1rem}
+  .cta-block h2 em{font-style:italic;color:var(--stone)}
+  .cta-block p{color:var(--muted);max-width:440px;margin:0 auto 2rem;font-size:0.92rem;line-height:1.85}
+  .cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 
-
-
-  /* SHARED PAGE STYLES */
-  .eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); display: block; margin-bottom: 0.8rem; }
-  .btn-primary { display: inline-block; padding: 1rem 2.4rem; background: var(--charcoal); color: var(--warm-white); font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: background 0.25s; border: none; cursor: pointer; }
-  .btn-primary:hover { background: var(--stone); }
-  .page-hero { padding: 10rem 2rem 5rem; text-align: center; position: relative; overflow: hidden; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: var(--sand-lt); }
-  .page-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center 35%; z-index: 0; }
-  .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(253,250,246,0.55) 0%, rgba(253,250,246,0.80) 50%, rgba(253,250,246,1) 100%); z-index: 1; }
-  .page-hero-content { position: relative; z-index: 2; }
-  .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 300; color: var(--charcoal); line-height: 1.15; margin-bottom: 1rem; }
-  .page-hero h1 em { font-style: italic; color: var(--stone); }
-  .page-hero p { max-width: 580px; margin: 0 auto; color: var(--muted); font-size: 0.95rem; line-height: 1.9; }
-  footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(212,191,160,0.3); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--muted); }
-  .footer-link { font-size: 0.72rem; color: var(--muted); text-decoration: none; }
-  .footer-link:hover { color: var(--charcoal); }
-  @media (max-width: 768px) { nav { padding: 1rem 1.4rem; } footer { flex-direction: column; text-align: center; } }
-
-  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; max-width: 1100px; margin: 4rem auto; padding: 0 2rem 5rem; }
-  .review-card { background: var(--cream); padding: 2.4rem; }
-  .review-header { display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 1.5rem; }
-  .review-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--sand-lt); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--stone); }
-  .review-name { font-weight: 500; font-size: 0.9rem; color: var(--charcoal); letter-spacing: 0.05em; }
-  .review-stars { color: var(--sand); font-size: 1.1rem; letter-spacing: 0.06em; margin: 0.2rem 0; }
-  .review-tag { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
-  .review-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--charcoal); line-height: 1.65; margin-bottom: 1.4rem; }
-  .review-story { border-top: 1px solid rgba(212,191,160,0.4); padding-top: 1.2rem; }
-  .review-story-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.4rem; }
-  .review-story p { font-size: 0.82rem; color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
-  .review-story strong { color: var(--charcoal); font-weight: 500; }
-  .cta-block { text-align: center; background: var(--sand-lt); padding: 5rem 2rem; }
-  .cta-block h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--charcoal); margin-bottom: 1rem; }
-  .cta-block h2 em { font-style: italic; color: var(--stone); }
-  .cta-block p { color: var(--muted); max-width: 440px; margin: 0 auto 2rem; font-size: 0.92rem; line-height: 1.85; }
-  @media (max-width: 768px) { .reviews-grid { grid-template-columns: 1fr; } }
-
+  footer{padding:2.5rem 3rem;border-top:1px solid rgba(212,191,160,0.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted)}
+  .footer-link{font-size:0.72rem;color:var(--muted);text-decoration:none}
+  @media(max-width:768px){nav{padding:1rem 1.4rem}.reviews-grid{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}.cta-buttons{flex-direction:column;align-items:center}}
 </style>
 </head>
 <body>
-<!-- OVERLAY -->
 <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
   <button class="drawer-close" onclick="closeDrawer()">✕</button>
@@ -89,17 +82,13 @@
   <a href="nos-experts.html">Nos experts</a>
   <a href="nos-valeurs.html">Nos valeurs</a>
   <a href="avis-clients.html">Avis clients</a>
-  <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="drawer-cta">Conseil gratuit</a>
+  <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit" target="_blank" class="drawer-cta">Conseil gratuit</a>
 </div>
-
-<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">Changer<span>de</span>Vie</a>
   <div class="nav-right">
-    <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="nav-cta">Conseil gratuit</a>
-    <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit" target="_blank" class="nav-cta">Conseil gratuit</a>
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -109,9 +98,16 @@
   <div class="page-hero-content">
     <span class="eyebrow">Ils ont franchi le pas</span>
     <h1>Ce qu'ils en <em>disent</em></h1>
-    
   </div>
 </section>
+
+<div class="contact-note" style="margin:3rem auto 0;padding:0 2rem;max-width:760px">
+  <p style="background:var(--cream);border-left:3px solid var(--sand);padding:1.2rem 1.8rem;font-size:0.88rem;color:var(--muted);font-style:italic;line-height:1.9">
+    <strong style="font-style:normal;color:var(--charcoal)">Vous souhaitez en savoir plus avant de vous lancer ?</strong><br>
+    Certains de nos anciens accompagnés se sont portés volontaires pour être contactés directement. Demandez-nous leurs coordonnées lors de votre appel gratuit — ou par écrit à l'adresse ci-dessous.
+  </p>
+</div>
+
 <div class="reviews-grid">
   <div class="review-card">
     <div class="review-header">
@@ -122,29 +118,14 @@
         <p class="review-tag">Bilan de compétences · Évolution de carrière</p>
       </div>
     </div>
-    <p class="review-quote">« J'ai fait mon Bilan de Compétences avec Leilani. J'ai appris bien plus qu'attendu sur moi-même et ça a apporté des effets positifs très concrets sur ma situation professionnelle ! Mon seul regret ? D'avoir hésité et de ne pas l'avoir fait avant. »</p>
+    <p class="review-quote">« J'ai renforcé bien plus qu'attendu ma confiance en moi — et ça s'est traduit en effets très concrets sur mon salaire. Mon seul regret ? D'avoir hésité et de ne pas l'avoir fait avant. »</p>
     <div class="review-story">
       <p class="review-story-label">Son parcours</p>
       <p><strong>Situation de départ :</strong> Secrétaire médicale et chargée de communication, Barbara voulait améliorer sa qualité de vie, la reconnaissance de son travail et sa confiance en elle.</p>
       <p><strong>Résultat :</strong> Dès le 3e rendez-vous de son bilan, Barbara a obtenu une augmentation de salaire. Quelques semaines plus tard, une deuxième — pour un total de près de 20% d'augmentation.</p>
     </div>
   </div>
-  <div class="review-card">
-    <div class="review-header">
-      <div class="review-avatar">P</div>
-      <div>
-        <p class="review-name">Pascal, 58 ans</p>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-tag">Reconversion · Économie sociale et solidaire</p>
-      </div>
-    </div>
-    <p class="review-quote">« À 58 ans, mon Bilan avec Leilani était le 3ème — et le plus transformateur. J'ai découvert une direction que je ne connaissais pas et établi un plan concret pour finaliser ma fin de carrière. »</p>
-    <div class="review-story">
-      <p class="review-story-label">Son parcours</p>
-      <p><strong>Situation de départ :</strong> Pascal se rapatrie en métropole après plus de 15 ans à Tahiti, et souhaite profiter de ce nouveau départ pour réfléchir à sa trajectoire.</p>
-      <p><strong>Résultat :</strong> Réorientation en ESS et activité parallèle dans le secteur canin en cours de développement.</p>
-    </div>
-  </div>
+
   <div class="review-card">
     <div class="review-header">
       <div class="review-avatar">M</div>
@@ -161,36 +142,47 @@
       <p><strong>Résultat :</strong> Recrutée chef de projet IT avec un salaire au-dessus de ses attentes — et déménagée à Tahiti.</p>
     </div>
   </div>
+
+  <div class="review-card">
+    <div class="review-header">
+      <div class="review-avatar">P</div>
+      <div>
+        <p class="review-name">Pascal, 58 ans</p>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-tag">Reconversion · Économie sociale et solidaire</p>
+      </div>
+    </div>
+    <p class="review-quote">« À 58 ans, mon Bilan avec Leilani était le 3ème — et le plus transformateur. J'ai découvert une direction que je ne connaissais pas et établi un plan concret pour finaliser ma fin de carrière. »</p>
+    <div class="review-story">
+      <p class="review-story-label">Son parcours</p>
+      <p><strong>Situation de départ :</strong> Pascal se rapatrie en métropole après plus de 15 ans à Tahiti, et souhaite profiter de ce nouveau départ pour réfléchir à sa trajectoire.</p>
+      <p><strong>Résultat :</strong> Réorientation en ESS et activité parallèle dans le secteur canin en cours de développement.</p>
+    </div>
+  </div>
 </div>
+
 <section class="cta-block">
   <h2>Prêt(e) à écrire <em>votre histoire</em> ?</h2>
   <p>Le premier pas est souvent le plus difficile. Réservez un conseil gratuit de 30 minutes — sans engagement.</p>
-  <a href="https://calendly.com/VOTRE_LIEN" target="_blank" class="btn-primary">Réserver mon conseil gratuit</a>
+  <div class="cta-buttons">
+    <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit" target="_blank" class="btn-primary">Réserver mon conseil gratuit</a>
+    <a href="nos-valeurs.html" class="btn-secondary">Comprendre nos valeurs</a>
+  </div>
 </section>
 
 <footer>
   <div class="footer-logo">ChangerDeVie</div>
-  <div class="footer-links">
-    <a href="qui-sommes-nous.html" class="footer-link">Qui sommes-nous</a>
+  <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+    <a href="index.html" class="footer-link">Accueil</a>
+    <a href="vous-reconnaissez-vous.html" class="footer-link">Vous reconnaissez-vous ?</a>
     <a href="nos-experts.html" class="footer-link">Nos experts</a>
     <a href="nos-valeurs.html" class="footer-link">Nos valeurs</a>
-    <a href="avis-clients.html" class="footer-link">Avis clients</a>
   </div>
   <div class="footer-link">© 2026 ChangerDeVie</div>
 </footer>
-
 <script>
-  // drawer
-  function toggleDrawer() {
-    document.getElementById('drawer').classList.toggle('open');
-    document.getElementById('overlay').classList.toggle('open');
-    document.getElementById('hamburger').classList.toggle('open');
-  }
-  function closeDrawer() {
-    document.getElementById('drawer').classList.remove('open');
-    document.getElementById('overlay').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('open');
-  }
+  function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');document.getElementById('overlay').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open')}
+  function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
 </script>
 </body>
 </html>
