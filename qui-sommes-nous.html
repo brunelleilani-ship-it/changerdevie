@@ -37,7 +37,7 @@
 
   /* HERO avec photo sunset */
   .hero-portrait{position:relative;height:85vh;min-height:500px;overflow:hidden}
-  .hero-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+  .hero-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
   .hero-portrait-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(58,48,40,0.1) 0%,rgba(58,48,40,0.05) 40%,rgba(253,250,246,1) 100%)}
   .hero-portrait-text{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);text-align:center;z-index:2;width:100%;padding:0 2rem}
   .hero-portrait-text h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:300;color:var(--charcoal);line-height:1.1}
@@ -137,18 +137,27 @@
 
   <p class="intro-quote">J'ai créé Changer-de-vie.fr car j'ai moi-même vécu le flou et la souffrance intérieure, incomprise, d'une transition non accompagnée. Je ne souhaite à personne de faire ce voyage seul — car bien entouré, définir un nouveau tournant peut être <em>une aventure plaisante et joyeuse.</em></p>
 
-  <!-- CHAPITRE 1 : Corporate + détresse -->
-  <div style="margin-bottom:2rem">
-    <span class="chapter-label">Chapitre 1</span>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--charcoal);margin-bottom:1.2rem;line-height:1.3">Toutes les cases cochées —<br><em style="color:var(--stone)">et pourtant.</em></h2>
-    <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:1rem">En 2018, j'obtiens mon diplôme d'ingénieur dans le top 10 de ma promotion. Je rejoins une multinationale, évolue en France et en expatriation, décroche mon CDI, achète mon appartement, enchaîne les promotions — classée dans le 1% des employés les plus performants.</p>
-    <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:1.5rem">Pourtant, malgré tous ces changements de postes, de pays, de salaire, <strong style="color:var(--charcoal)">une souffrance intérieure était toujours présente</strong>. Je performais. Mais je n'étais pas heureuse — parce que rationnellement, j'avais coché toutes les cases.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1.5rem">
-      <img src="photo_corporate.jpg" alt="Leilani en conférence" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top">
-      <img src="photo_detresse.jpg" alt="Période de détresse" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top">
+  <!-- CHAPITRE 1 : Corporate -->
+  <div class="chapter-split">
+    <img src="photo_corporate.jpg" alt="Leilani en conférence" class="chapter-img">
+    <div>
+      <span class="chapter-label">Chapitre 1</span>
+      <h2>Toutes les cases cochées —<br><em>et pourtant.</em></h2>
+      <p>En 2018, j'obtiens mon diplôme d'ingénieur dans le top 10 de ma promotion. Je rejoins une multinationale, évolue en France et en expatriation, décroche mon CDI, achète mon appartement, enchaîne les promotions — classée dans le 1% des employés les plus performants.</p>
+      <p>Pourtant, malgré tous ces changements de postes, de pays, de salaire, <strong>une souffrance intérieure était toujours présente</strong>. Je performais. Mais je n'étais pas heureuse — parce que rationnellement, j'avais coché toutes les cases.</p>
     </div>
-    <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:0.8rem">Cette incompréhension, mêlée à de la culpabilité, créait un mélange explosif. Autour de moi, personne ne comprenait ce que je ressentais. <strong style="color:var(--charcoal)">Pas d'accompagnement.</strong> Alors, j'ai fini par imploser.</p>
-    <p style="color:var(--muted);font-size:0.95rem;line-height:1.95">J'ai élaboré mon plan de sortie, ma stratégie financière, puis j'ai démissionné — avec la décision de repartir d'une feuille blanche. Une intuition renforcée par un plan rationnel.</p>
+  </div>
+
+  <!-- CHAPITRE 2 : Détresse -->
+  <div class="chapter-split reverse">
+    <img src="photo_detresse.jpg" alt="Période de détresse" class="chapter-img">
+    <div>
+      <span class="chapter-label">Chapitre 2</span>
+      <h2>L'incompréhension.<br><em>La culpabilité. L'implosion.</em></h2>
+      <p>Cette incompréhension, mêlée à de la culpabilité, créait un mélange explosif d'émotions. Pour trouver une explication rationnelle, je cherchais les responsables : les managers, les processus, le modèle économique…</p>
+      <p>Autour de moi, personne ne comprenait ce que je ressentais. <strong>Pas d'accompagnement.</strong> Alors, j'ai fini par imploser.</p>
+      <p>J'ai élaboré mon plan de sortie, ma stratégie financière, puis j'ai démissionné — avec la décision de repartir d'une feuille blanche. Une intuition renforcée par un plan rationnel.</p>
+    </div>
   </div>
 
   <div class="pull-quote">
@@ -171,15 +180,16 @@
 
   <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:1rem">J'ai voyagé en suivant mon intuition et ce qui me plaisait. Je me suis éduquée sur les émotions, la quête de sens, le fonctionnement de l'humain. J'ai découvert et expérimenté la méditation, la sophrologie, le yoga — des outils qui m'ont aidée à gérer mes émotions, mes peurs et gagner énormément en clarté mentale.</p>
 
-  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:2rem">Sur mon chemin, j'ai été inspirée par de nombreuses personnes, histoires de vie, points de vue, cultures, expériences et œuvres littéraires. J'ai exploré et testé différents projets entrepreneuriaux — séjours kite, coaching en sports extrêmes pour public féminin… J'ai même fait <strong style="color:var(--charcoal)">la une d'un magazine de kitesurf</strong> dans ces péripéties !</p>
+  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:2rem">Sur mon chemin, j'ai été inspirée par de nombreuses personnes, histoires de vie, points de vue, cultures, expériences et œuvres littéraires. J'ai exploré et testé différents projets entrepreneuriaux — séjours kite, coaching en sports extrêmes pour public féminin… J'ai même fait <strong>la une d'un magazine de kitesurf</strong> dans ces péripéties !</p>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:2rem;align-items:start">
+  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:3rem">J'étais devenue l'entrepreneuse que j'avais visualisée. J'étais <strong>heureuse ET performante</strong>. Ma vie professionnelle était devenue fluide, plaisante et devenait financièrement stable grâce à des activités professionnelles totalement alignées à qui j'étais et mes valeurs !</p>
+
+  <!-- Sabbatique photos -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:3.5rem;align-items:start">
     <img src="photo_yoga.jpg" alt="Yoga en voyage" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top">
-    <img src="photo_voile.jpg" alt="Voile en mer" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top">
+    <img src="photo_voile.jpg" alt="En mer" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top">
     <img src="photo_kite_sunset.jpg" alt="Kite au coucher du soleil" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center">
   </div>
-
-  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:3rem">J'étais devenue l'entrepreneuse que j'avais visualisée. J'étais <strong style="color:var(--charcoal)">heureuse ET performante</strong>. Ma vie professionnelle était devenue fluide, plaisante et devenait financièrement stable grâce à des activités professionnelles totalement alignées à qui j'étais et mes valeurs !</p>
 
   <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
 
@@ -193,23 +203,22 @@
 
   <div class="photo-trio" style="margin-bottom:3.5rem">
     <img src="photo_rwtw_zanzibar.jpg" alt="RWTW Zanzibar formation" style="aspect-ratio:3/4;object-fit:cover;object-position:center top">
-    <img src="photo_jambiani.jpg" alt="Jambiani Zanzibar" style="aspect-ratio:3/4;object-fit:cover;object-position:center top">
-    <img src="photo_formation.jpg" alt="Session de formation BC" style="aspect-ratio:3/4;object-fit:cover;object-position:center top">
+    <img src="photo_jambiani.jpg" alt="Jambiani Training Centre" style="aspect-ratio:3/4;object-fit:cover;object-position:center top">
+    <img src="photo_rwtw_table.jpg" alt="Table ronde RWTW" style="aspect-ratio:3/4;object-fit:cover;object-position:center 30%">
   </div>
 
   <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
 
   <!-- CHAPITRE 5 : BC et aujourd'hui -->
-  <div style="margin-top:2.5rem;margin-bottom:2rem">
-    <span class="chapter-label">Aujourd'hui</span>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--charcoal);margin-bottom:1.2rem;line-height:1.3">ChangerDeVie —<br><em style="color:var(--stone)">et maintenant, aider les autres.</em></h2>
-    <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:1rem">Mes proches ont commencé à me demander conseil. Mais je ne me sentais pas équipée — ce qui avait marché pour moi n'allait pas forcément fonctionner pour d'autres. C'est ainsi que je me suis formée au Bilan de Compétences.</p>
-    <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:1.5rem">ChangerDeVie est né de ma passion pour aider d'autres personnes à sortir de ce flou, de ce brouillard mental, de ce mal-être incompris. <strong style="color:var(--charcoal)">En trouvant les outils et les experts qui conviennent vraiment</strong> à leur personnalité et au moment dans lequel ils se trouvent.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1.5rem">
-      <img src="photo_speaker.jpg" alt="Leilani speaker panel" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top">
-      <img src="photo_rwtw_table.jpg" alt="Session collective" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 20%">
+  <div class="chapter-split" style="margin-top:2.5rem">
+    <img src="photo_speaker.jpg" alt="Leilani speaker" class="chapter-img">
+    <div>
+      <span class="chapter-label">Aujourd'hui</span>
+      <h2>ChangerDeVie —<br><em>et maintenant, aider les autres.</em></h2>
+      <p>Mes proches ont commencé à me demander conseil. Mais je ne me sentais pas équipée — ce qui avait marché pour moi n'allait pas forcément fonctionner pour d'autres. C'est ainsi que je me suis formée au Bilan de Compétences.</p>
+      <p>ChangerDeVie est né de ma passion pour aider d'autres personnes à sortir de ce flou, de ce brouillard mental, de ce mal-être incompris. <strong>En trouvant les outils et les experts qui conviennent vraiment</strong> à leur personnalité et au moment dans lequel ils se trouvent.</p>
+      <p>C'est la conviction qu'une personne qui a besoin de changement sera mieux accompagnée par une communauté d'experts qu'une seule personne ou des experts travaillant en silo.</p>
     </div>
-    <p style="color:var(--muted);font-size:0.95rem;line-height:1.95">C'est la conviction qu'une personne qui a besoin de changement sera mieux accompagnée par une communauté d'experts qu'une seule personne ou des experts travaillant en silo.</p>
   </div>
 
   <div class="cta-block">
