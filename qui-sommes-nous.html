@@ -1,107 +1,269 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qui sommes-nous — ChangerDeVie</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{--sand:#D4BFA0;--sand-lt:#EDE3D4;--cream:#F7F3EE;--warm-white:#FDFAF6;--stone:#9C8670;--charcoal:#3A3028;--text:#4A3F35;--muted:#8C7B6E}
-  html{scroll-behavior:smooth}
-  body{background:var(--warm-white);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7}
-  nav{position:fixed;top:0;width:100%;z-index:200;padding:1.1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(253,250,246,0.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(212,191,160,0.3)}
-  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;letter-spacing:0.08em;color:var(--charcoal);text-decoration:none}
-  .nav-logo span{color:var(--stone)}
-  .nav-right{display:flex;align-items:center;gap:1.5rem}
-  .nav-cta{display:inline-block;padding:0.6rem 1.4rem;background:var(--charcoal);color:var(--warm-white);font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
-  .nav-cta:hover{background:var(--stone)}
-  .hamburger{cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px;background:none;border:none}
-  .hamburger span{display:block;width:22px;height:1.5px;background:var(--charcoal);transition:all 0.3s}
-  .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-  .hamburger.open span:nth-child(2){opacity:0}
-  .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-  .drawer{position:fixed;top:0;right:-320px;width:300px;height:100vh;background:var(--warm-white);z-index:300;padding:5rem 2.5rem 3rem;display:flex;flex-direction:column;transition:right 0.35s ease;box-shadow:-4px 0 30px rgba(0,0,0,0.08);border-left:1px solid rgba(212,191,160,0.3)}
-  .drawer.open{right:0}
-  .drawer-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;cursor:pointer;font-size:1.4rem;color:var(--muted)}
-  .drawer a{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--charcoal);text-decoration:none;padding:0.9rem 0;border-bottom:1px solid rgba(212,191,160,0.2);transition:color 0.2s}
-  .drawer a:hover{color:var(--stone)}
-  .drawer a.drawer-cta{margin-top:1.5rem;border:none;display:inline-block;padding:0.9rem 1.6rem;background:var(--charcoal);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-align:center}
-  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:250;display:none}
-  .overlay.open{display:block}
-  .eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:0.8rem}
-  .btn-primary{display:inline-block;padding:1rem 2.4rem;background:var(--charcoal);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.25s}
-  .btn-primary:hover{background:var(--stone)}
-  .btn-secondary{display:inline-block;padding:0.85rem 2rem;border:1px solid var(--sand);color:var(--charcoal);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all 0.25s}
-  .btn-secondary:hover{background:var(--sand-lt)}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qui sommes-nous — ChangerDeVie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF8F4;
+      --dark: #1C1C1C;
+      --muted: #7A7A72;
+      --accent: #8B6F5E;
+      --accent-light: #E8DDD5;
+      --border: #E2DDD8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.7;
+    }
 
-  /* HERO avec photo sunset */
-  .hero-portrait{position:relative;height:85vh;min-height:500px;overflow:hidden}
-  .hero-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
-  .hero-portrait-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(58,48,40,0.1) 0%,rgba(58,48,40,0.05) 40%,rgba(253,250,246,1) 100%)}
-  .hero-portrait-text{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);text-align:center;z-index:2;width:100%;padding:0 2rem}
-  .hero-portrait-text h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:300;color:var(--charcoal);line-height:1.1}
-  .hero-portrait-text h1 em{font-style:italic;color:var(--stone)}
-  .hero-portrait-text p{color:var(--muted);font-size:0.95rem;margin-top:0.6rem}
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 2.5rem;
+      background: rgba(250,248,244,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 300; letter-spacing: 0.04em;
+      color: var(--dark); text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-cta {
+      font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--cream); background: var(--dark);
+      padding: 0.55rem 1.2rem; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); }
+    .hamburger {
+      background: none; border: none; cursor: pointer;
+      display: flex; flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--dark); transition: 0.3s;
+    }
 
-  /* CONTENU NARRATIF */
-  .narrative{max-width:740px;margin:0 auto;padding:4rem 2rem}
+    /* DRAWER */
+    .overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.3);
+      opacity: 0; pointer-events: none; z-index: 200; transition: opacity 0.3s;
+    }
+    .overlay.open { opacity: 1; pointer-events: auto; }
+    .drawer {
+      position: fixed; top: 0; right: -320px; width: 300px; height: 100vh;
+      background: var(--cream); z-index: 300; padding: 3rem 2rem;
+      display: flex; flex-direction: column; gap: 1.4rem;
+      transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+      border-left: 1px solid var(--border);
+    }
+    .drawer.open { right: 0; }
+    .drawer a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 400; color: var(--dark);
+      text-decoration: none; border-bottom: 1px solid var(--border);
+      padding-bottom: 0.8rem; transition: color 0.2s;
+    }
+    .drawer a:hover { color: var(--accent); }
+    .drawer-cta {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.78rem !important; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--cream) !important;
+      background: var(--dark); padding: 0.8rem 1.2rem;
+      text-align: center; border: none !important;
+    }
+    .drawer-close {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      background: none; border: none; font-size: 1.2rem;
+      cursor: pointer; color: var(--muted);
+    }
 
-  .intro-quote{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:var(--charcoal);line-height:1.7;margin-bottom:3.5rem;border-left:3px solid var(--sand);padding-left:1.8rem}
-  .intro-quote em{font-style:italic;color:var(--stone)}
+    /* PAGE HERO */
+    .page-hero {
+      position: relative; height: 55vh; min-height: 380px;
+      display: flex; align-items: flex-end; padding-bottom: 3rem;
+      margin-top: 62px;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('photo_aujourdhui.png');
+      background-size: cover; background-position: center 30%;
+    }
+    .page-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(28,28,28,0.55) 0%, transparent 60%);
+    }
+    .page-hero-content {
+      position: relative; padding: 0 2.5rem;
+    }
+    .eyebrow {
+      display: block; font-size: 0.72rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.7);
+      margin-bottom: 0.5rem;
+    }
+    .page-hero-content h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 300; color: #fff; line-height: 1.05;
+    }
+    .page-hero-content h1 em { font-style: italic; color: var(--accent-light); }
 
-  /* Chapitre = image + texte côte à côte ou empilés */
-  .chapter{margin-bottom:4rem}
-  .chapter-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);margin-bottom:0.5rem}
-  .chapter h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--charcoal);margin-bottom:1.2rem;line-height:1.3}
-  .chapter h2 em{font-style:italic;color:var(--stone)}
-  .chapter p{color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:0.9rem}
-  .chapter p strong{color:var(--charcoal);font-weight:500}
-  .chapter p em{font-style:italic;color:var(--charcoal)}
+    /* CONTENT */
+    .content-block {
+      max-width: 780px; margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem; font-weight: 300; line-height: 1.6;
+      color: var(--dark); margin-bottom: 3.5rem;
+    }
+    .intro em { font-style: italic; color: var(--accent); }
 
-  /* Layout image + texte */
-  .chapter-split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;margin-bottom:4rem}
-  .chapter-split.reverse{direction:rtl}
-  .chapter-split.reverse > *{direction:ltr}
-  .chapter-img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top}
-  .chapter-img.landscape{aspect-ratio:4/3;object-position:center center}
-  .chapter-img.square{aspect-ratio:1;object-position:center top}
+    .story-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 400; margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+    .story-section h2 em { font-style: italic; color: var(--accent); }
 
-  /* Image pleine largeur */
-  .chapter-full{margin:0 -2rem 4rem;max-width:none}
-  .chapter-full img{width:100%;height:360px;object-fit:cover;object-position:center 30%}
-  .chapter-full .caption{font-size:0.75rem;color:var(--stone);font-style:italic;text-align:center;padding:0.6rem 2rem 0}
+    .story-section p {
+      font-size: 0.97rem; color: #3a3a3a;
+      margin-bottom: 1.4rem; line-height: 1.85;
+    }
 
-  /* Grille 3 photos */
-  .photo-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin:2rem 0 1rem}
-  .photo-trio img{width:100%;aspect-ratio:4/3;object-fit:cover}
+    /* CHAPTER TITLES */
+    .chapter {
+      margin-top: 4rem; padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .chapter-label {
+      font-size: 0.7rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 0.8rem; display: block;
+    }
+    .chapter h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 400;
+      margin-bottom: 1.5rem; line-height: 1.25;
+    }
+    .chapter h3 em { font-style: italic; color: var(--accent); }
 
-  .pull-quote{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--charcoal);line-height:1.65;background:var(--cream);border-left:2px solid var(--sand);padding:1.2rem 1.8rem;margin:2rem 0}
+    /* PHOTO LAYOUTS */
 
-  .divider{text-align:center;padding:1.5rem 0;color:var(--sand);font-size:0.9rem;letter-spacing:0.4em}
+    /* Two photos side by side (portrait pro + détresse) */
+    .duo-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .duo-photos img {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; object-position: top;
+    }
+    .duo-photos .photo-caption {
+      font-size: 0.72rem; color: var(--muted);
+      text-align: center; margin-top: 0.4rem;
+      font-style: italic;
+    }
 
-  .cta-block{background:var(--sand-lt);padding:3.5rem 2rem;text-align:center;margin:4rem -2rem -4rem}
-  .cta-block h2{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--charcoal);margin-bottom:0.8rem}
-  .cta-block h2 em{font-style:italic;color:var(--stone)}
-  .cta-block p{color:var(--muted);max-width:460px;margin:0 auto 2rem;font-size:0.92rem;line-height:1.85}
-  .cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    /* Single wide photo */
+    .photo-wide {
+      width: 100%; margin: 2rem 0;
+      aspect-ratio: 16/9; object-fit: cover;
+    }
 
-  footer{padding:2.5rem 3rem;border-top:1px solid rgba(212,191,160,0.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted)}
-  .footer-link{font-size:0.72rem;color:var(--muted);text-decoration:none}
+    /* Portrait single */
+    .photo-portrait {
+      width: 60%; margin: 2rem auto;
+      display: block;
+      aspect-ratio: 3/4; object-fit: cover;
+    }
 
-  @media(max-width:768px){
-    nav{padding:1rem 1.4rem}
-    .chapter-split{grid-template-columns:1fr}
-    .chapter-split.reverse{direction:ltr}
-    .photo-trio{grid-template-columns:1fr 1fr}
-    .hero-portrait{height:65vh}
-    footer{flex-direction:column;text-align:center}
-    .cta-buttons{flex-direction:column;align-items:center}
-  }
-</style>
+    /* Grid of small squares */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+      margin: 2rem 0;
+    }
+    .photo-grid img {
+      width: 100%; aspect-ratio: 1/1;
+      object-fit: cover;
+    }
+    .photo-grid.two-col {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      border-left: 2px solid var(--accent);
+      padding: 1rem 1.5rem;
+      margin: 2.5rem 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-style: italic;
+      color: var(--accent); line-height: 1.5;
+    }
+
+    /* CTA BLOCK */
+    .cta-block {
+      text-align: center; margin-top: 4rem; padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .cta-block p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 300; margin-bottom: 1.5rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--cream); background: var(--dark);
+      padding: 0.9rem 2rem; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; color: var(--muted);
+    }
+    .footer-link {
+      font-size: 0.72rem; color: var(--muted); text-decoration: none;
+    }
+
+    @media(max-width: 768px) {
+      nav { padding: 1rem 1.4rem; }
+      .duo-photos { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .photo-portrait { width: 85%; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
+
 <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
   <button class="drawer-close" onclick="closeDrawer()">✕</button>
@@ -114,136 +276,148 @@
   <a href="avis-clients.html">Avis clients</a>
   <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit" target="_blank" class="drawer-cta">Conseil gratuit</a>
 </div>
+
 <nav>
   <a href="index.html" class="nav-logo">Changer<span>de</span>Vie</a>
   <div class="nav-right">
     <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit" target="_blank" class="nav-cta">Conseil gratuit</a>
-    <button class="hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- HERO — photo sunset aujourd'hui -->
-<section class="hero-portrait">
-  <img src="photo_aujourdhui.jpg" alt="Leilani Brunel">
-  <div class="hero-portrait-overlay"></div>
-  <div class="hero-portrait-text">
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
     <span class="eyebrow">Derrière le projet</span>
-    <h1>Leilani Brunel —<br><em>fondatrice</em></h1>
-    <p>Ingénieure · Entrepreneuse · Consultante en Bilan de Compétences</p>
+    <h1>Qui <em>sommes-nous</em> ?</h1>
   </div>
 </section>
 
-<div class="narrative">
+<div class="content-block">
 
-  <p class="intro-quote">J'ai créé Changer-de-vie.fr car j'ai moi-même vécu le flou et la souffrance intérieure, incomprise, d'une transition non accompagnée. Je ne souhaite à personne de faire ce voyage seul — car bien entouré, définir un nouveau tournant peut être <em>une aventure plaisante et joyeuse.</em></p>
+  <p class="intro">J'ai créé Changer-de-vie.fr car j'ai moi-même vécu le flou et la souffrance intérieure, incomprise, méprisée, d'une transition non accompagnée. Je ne souhaite à personne de faire ce voyage seul — car bien entouré, définir un nouveau tournant peut être <em>une aventure plaisante et joyeuse.</em></p>
 
-  <!-- CHAPITRE 1 : Corporate -->
-  <div class="chapter-split">
-    <img src="photo_corporate.jpg" alt="Leilani en conférence" class="chapter-img">
-    <div>
-      <span class="chapter-label">Chapitre 1</span>
-      <h2>Toutes les cases cochées —<br><em>et pourtant.</em></h2>
-      <p>En 2018, j'obtiens mon diplôme d'ingénieur dans le top 10 de ma promotion. Je rejoins une multinationale, évolue en France et en expatriation, décroche mon CDI, achète mon appartement, enchaîne les promotions — classée dans le 1% des employés les plus performants.</p>
-      <p>Pourtant, malgré tous ces changements de postes, de pays, de salaire, <strong>une souffrance intérieure était toujours présente</strong>. Je performais. Mais je n'étais pas heureuse — parce que rationnellement, j'avais coché toutes les cases.</p>
+  <div class="story-section">
+    <h2>Mon histoire, et comment elle a donné naissance à <em>ChangerDeVie</em></h2>
+
+    <!-- CHAPITRE 1 : LA RÉUSSITE QUI NE SUFFIT PAS -->
+    <span class="chapter-label">Chapitre 1</span>
+    <h3 class="chapter h3" style="border-top:none; padding-top:0; margin-top:0;">La réussite qui <em>ne suffisait pas</em></h3>
+
+    <p>J'ai grandi comme une bonne élève. En 2018, j'ai obtenu mon diplôme d'ingénieur dans le top 10 de ma promotion, puis évolué dans une multinationale en France et en expatriation — CDI, appartement, promotions, classée dans le 1% des employés les plus performants. Pourtant, malgré tous ces changements de postes, de pays, de salaire, une souffrance intérieure était toujours présente. Je performais, mais je n'étais pas heureuse — parce que rationnellement, j'avais coché toutes les cases.</p>
+
+    <p>Cette incompréhension, mêlée à de la culpabilité, créait un mélange explosif d'émotions. Pour trouver une explication rationnelle, je cherchais les responsables : les managers, les processus, le modèle économique… Autour de moi, personne ne comprenait ce que je ressentais. Pas d'accompagnement.</p>
+
+    <!-- Photos côte à côte : portrait pro + détresse -->
+    <div class="duo-photos">
+      <div>
+        <img src="photo_portrait_pro.jpg" alt="Leilani, portrait professionnel">
+        <p class="photo-caption">Performante… mais pas heureuse</p>
+      </div>
+      <div>
+        <img src="photo_detresse.jpg" alt="La souffrance intérieure">
+        <p class="photo-caption">Une souffrance invisible</p>
+      </div>
     </div>
-  </div>
 
-  <!-- CHAPITRE 2 : Détresse -->
-  <div class="chapter-split reverse">
-    <img src="photo_detresse.jpg" alt="Période de détresse" class="chapter-img">
-    <div>
+    <!-- CHAPITRE 2 : LE DÉCLIC -->
+    <div class="chapter">
       <span class="chapter-label">Chapitre 2</span>
-      <h2>L'incompréhension.<br><em>La culpabilité. L'implosion.</em></h2>
-      <p>Cette incompréhension, mêlée à de la culpabilité, créait un mélange explosif d'émotions. Pour trouver une explication rationnelle, je cherchais les responsables : les managers, les processus, le modèle économique…</p>
-      <p>Autour de moi, personne ne comprenait ce que je ressentais. <strong>Pas d'accompagnement.</strong> Alors, j'ai fini par imploser.</p>
-      <p>J'ai élaboré mon plan de sortie, ma stratégie financière, puis j'ai démissionné — avec la décision de repartir d'une feuille blanche. Une intuition renforcée par un plan rationnel.</p>
+      <h3>Le <em>déclic</em></h3>
+
+      <p>En 2020, j'ai décidé de tout quitter. Sans filet, sans plan B vraiment solide, avec juste la conviction que continuer ainsi n'était plus possible. J'ai pris un congé sabbatique, puis démissionné.</p>
+
+      <p>C'est là que tout a commencé à changer — non pas parce que j'avais trouvé les bonnes réponses, mais parce que j'avais enfin accepté de poser les bonnes questions.</p>
     </div>
-  </div>
 
-  <div class="pull-quote">
-    « Je deviendrai une entrepreneuse pieds nus, parcourant le monde en gagnant sa vie simplement en faisant le bien pour les autres. »<br>
-    <span style="font-size:0.8rem;font-style:normal;color:var(--stone);letter-spacing:0.08em">— Mon mail d'au revoir à la multinationale</span>
-  </div>
+    <!-- CHAPITRE 3 : ANNÉE SABBATIQUE -->
+    <div class="chapter">
+      <span class="chapter-label">Chapitre 3</span>
+      <h3>L'année <em>sabbatique</em></h3>
 
-  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:3rem">Je comprendrais plus tard que c'était ça — <strong>définir une vision</strong>. Et que c'était une étape essentielle du changement.</p>
+      <p>J'ai voyagé en suivant mon intuition et ce qui me plaisait. Je me suis éduquée sur les émotions, la quête de sens, le fonctionnement de l'humain. J'ai découvert et expérimenté la méditation, la sophrologie, le yoga — des outils qui m'ont aidée à gérer mes émotions, mes peurs et gagner énormément en clarté mentale.</p>
 
-  <!-- CHAPITRE 3 : Voyage/sabbatique -->
-  <div class="chapter">
-    <span class="chapter-label">Chapitre 3</span>
-    <h2>L'année sabbatique —<br><em>suivre uniquement son intuition.</em></h2>
-  </div>
+      <p>Sur mon chemin, j'ai été inspirée par de nombreuses personnes, histoires de vie, points de vues, cultures, expériences et œuvres littéraires. J'ai exploré et testé différents projets entrepreneuriaux — séjours kite, coaching en sports extrêmes pour public féminin… J'ai même fait la une d'un magazine de kitesurf dans ces péripéties!</p>
 
-  <div class="chapter-full">
-    <img src="photo_voyage.jpg" alt="Trek sabbatique" style="width:100%;height:400px;object-fit:cover;object-position:center 35%">
-    <p class="caption">Australie, année sabbatique — apprendre à avancer sans plan défini.</p>
-  </div>
+      <p>J'étais devenue l'entrepreneuse que j'avais visualisée. J'étais heureuse ET performante. Ma vie professionnelle était devenue fluide, plaisante et devenait financièrement stable grâce à des activités professionnelles totalement alignées à qui j'étais et mes valeurs !</p>
 
-  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:1rem">J'ai voyagé en suivant uniquement mon intuition. Je me suis éduquée sur les émotions, la quête de sens, le fonctionnement de l'humain. J'ai découvert et expérimenté la méditation, la sophrologie, le yoga — des outils qui m'ont aidée à gérer mes émotions, mes peurs, ma clarté mentale.</p>
+      <!-- Grille 3 photos sabbatique -->
+      <div class="photo-grid">
+        <img src="photo_yoga.jpg" alt="Méditation et yoga">
+        <img src="photo_voile.jpg" alt="Voyage en voilier">
+        <img src="photo_kite_sunset.jpg" alt="Kitesurf au coucher de soleil">
+      </div>
 
-  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:3rem">Sur mon chemin, j'ai été inspirée par de nombreuses personnes, cultures, expériences et œuvres littéraires. J'ai exploré et testé différents projets entrepreneuriaux — séjours sportifs, coaching en sports extrêmes pour public féminin… Et j'ai même fait <strong>la une d'un magazine de kitesurf</strong> dans ces péripéties.</p>
+      <!-- Photo magazine portrait -->
+      <img src="photo_magazine.jpg" alt="Magazine de kitesurf" class="photo-portrait">
+    </div>
 
-  <!-- Magazine kite -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:3.5rem;align-items:start">
-    <img src="photo_nomade.jpg" alt="Nomade digitale au Brésil" style="width:100%;aspect-ratio:4/3;object-fit:cover">
-    <img src="photo_magazine.jpg" alt="Une de magazine kitesurf" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center top">
-  </div>
+    <!-- CHAPITRE 4 : RISE WITH THE WIND -->
+    <div class="chapter">
+      <span class="chapter-label">Chapitre 4</span>
+      <h3><em>Rise with the Wind</em> — redonner des ailes</h3>
 
-  <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+      <p>De cette aventure est né Rise with the Wind — un programme qui forme des femmes de communautés côtières au Brésil, au Mexique et à Zanzibar pour devenir instructrices de kitesurf certifiées IKO. Parce que le vent souffle pour tout le monde.</p>
 
-  <!-- CHAPITRE 4 : RWTW -->
-  <div class="chapter" style="margin-top:2.5rem">
-    <span class="chapter-label">Chapitre 4</span>
-    <h2>Rise with the Wind —<br><em>la vision qui se réalise.</em></h2>
-    <p>Puis j'ai rencontré un mécène avec qui j'ai coconstruit <strong>Rise with the Wind</strong> : un programme de formation pour femmes de milieu désavantagé pour devenir instructrices de kitesurf, dans des pays en développement.</p>
-    <p>Depuis, je parcours régulièrement le monde pour mentorer et coacher des femmes sans CV — les aider à s'autodéterminer, grandir, atteindre leurs visions, développer leurs micro-entreprises.</p>
-  </div>
+      <!-- Grille photos RWTW -->
+      <div class="photo-grid two-col">
+        <img src="photo_rwtw_zanzibar.jpg" alt="Rise with the Wind Zanzibar">
+        <img src="photo_jambiani.jpg" alt="Formation Jambiani Training Centre">
+      </div>
+    </div>
 
-  <div class="photo-trio" style="margin-bottom:3.5rem">
-    <img src="photo_rwtw_zanzibar.jpg" alt="RWTW Zanzibar formation" style="aspect-ratio:3/4;object-fit:cover;object-position:center top">
-    <img src="photo_rwtw_table.jpg" alt="RWTW table ronde" style="aspect-ratio:3/4;object-fit:cover;object-position:center 20%">
-    <img src="photo_formation.jpg" alt="Session de formation" style="aspect-ratio:3/4;object-fit:cover">
-  </div>
-
-  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:1rem">J'étais devenue l'entrepreneuse que j'avais visualisée. J'étais <strong>heureuse ET performante</strong>. Ma vie professionnelle était devenue fluide, plaisante, financièrement stable.</p>
-
-  <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
-
-  <!-- CHAPITRE 5 : BC et aujourd'hui -->
-  <div class="chapter-split" style="margin-top:2.5rem">
-    <img src="photo_speaker.jpg" alt="Leilani speaker" class="chapter-img">
-    <div>
+    <!-- CHAPITRE 5 : AUJOURD'HUI -->
+    <div class="chapter">
       <span class="chapter-label">Aujourd'hui</span>
-      <h2>ChangerDeVie —<br><em>et maintenant, aider les autres.</em></h2>
-      <p>Mes proches ont commencé à me demander conseil. Mais je ne me sentais pas équipée — ce qui avait marché pour moi n'allait pas forcément fonctionner pour d'autres. C'est ainsi que je me suis formée au Bilan de Compétences.</p>
-      <p>ChangerDeVie est né de ma passion pour aider d'autres personnes à sortir de ce flou, de ce brouillard mental, de ce mal-être incompris. <strong>En trouvant les outils et les experts qui conviennent vraiment</strong> à leur personnalité et au moment dans lequel ils se trouvent.</p>
-      <p>C'est la conviction qu'une personne qui a besoin de changement sera mieux accompagnée par une communauté d'experts qu'une seule personne ou des experts travaillant en silo.</p>
+      <h3>Accompagner les autres à <em>trouver leur voie</em></h3>
+
+      <p>Mon propre chemin m'a conduite à me former comme consultante en bilan de compétences. Accompagner des personnes en transition — les aider à clarifier qui elles sont, ce qu'elles veulent vraiment, et comment y aller — est devenu une évidence. C'est le cœur de ce que je fais aujourd'hui avec ChangerDeVie.</p>
+
+      <p>J'ai réuni autour de moi un collectif de 24 experts soigneusement sélectionnés, qui partagent la même éthique : placer la personne au centre, avec rigueur et chaleur.</p>
+
+      <!-- Photo formation -->
+      <img src="photo_formation.jpg" alt="Formation et transmission" class="photo-portrait">
+
+      <div class="pull-quote">
+        "Je ne souhaite à personne de faire ce voyage seul — mais bien entouré, changer de vie peut être une aventure plaisante et joyeuse."
+      </div>
+
+      <p>Parce que la transition professionnelle n'est pas un aveu d'échec. C'est souvent le signe que vous avez grandi, et que vous méritez mieux que de continuer à faire semblant.</p>
+
+      <!-- Photo speaker en conclusion -->
+      <img src="photo_speaker.jpg" alt="Leilani en conférence" class="photo-wide">
     </div>
+
   </div>
 
   <div class="cta-block">
-    <h2>Vous avez envie d'en savoir<br><em>un peu plus ?</em></h2>
-    <p>Un appel de 30 minutes, sans agenda. Vous partagez où vous en êtes — et on voit ensemble ce qui pourrait vous aider.</p>
-    <div class="cta-buttons">
-      <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit" target="_blank" class="btn-primary">Mon conseil gratuit</a>
-      <a href="nos-valeurs.html" class="btn-secondary">Découvrir nos valeurs</a>
-    </div>
+    <p>Prête à écrire votre prochain chapitre ?</p>
+    <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit" target="_blank" class="btn-primary">
+      Réserver un appel gratuit
+    </a>
   </div>
 
 </div>
 
 <footer>
-  <div class="footer-logo">ChangerDeVie</div>
-  <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
-    <a href="index.html" class="footer-link">Accueil</a>
-    <a href="nos-experts.html" class="footer-link">Nos experts</a>
-    <a href="nos-valeurs.html" class="footer-link">Nos valeurs</a>
-    <a href="avis-clients.html" class="footer-link">Avis clients</a>
-  </div>
-  <div class="footer-link">© 2026 ChangerDeVie</div>
+  <span class="footer-logo">Changer<span style="color:var(--accent)">de</span>Vie</span>
+  <a href="mentions-legales.html" class="footer-link">Mentions légales</a>
+  <a href="politique-confidentialite.html" class="footer-link">Politique de confidentialité</a>
 </footer>
+
 <script>
-  function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');document.getElementById('overlay').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open')}
-  function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
+  function toggleDrawer() {
+    document.getElementById('drawer').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+  }
+  function closeDrawer() {
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+  }
 </script>
+
 </body>
 </html>
