@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nos Experts — ChangerDeVie</title>
+<title>Nos Experts & Comment ça marche — ChangerDeVie</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -34,6 +34,7 @@
   .btn-primary:hover{background:var(--stone)}
   .btn-secondary{display:inline-block;padding:0.85rem 2rem;border:1px solid var(--sand);color:var(--charcoal);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all 0.25s}
   .btn-secondary:hover{background:var(--sand-lt)}
+
   .page-hero{padding:10rem 2rem 5rem;text-align:center;position:relative;overflow:hidden;min-height:340px;display:flex;flex-direction:column;justify-content:center;align-items:center}
   .page-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 35%;z-index:0}
   .page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(253,250,246,0.25) 0%,rgba(253,250,246,0.45) 55%,rgba(253,250,246,1) 100%);z-index:1}
@@ -41,52 +42,103 @@
   .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:300;color:var(--charcoal);line-height:1.15;margin-bottom:1rem}
   .page-hero h1 em{font-style:italic;color:var(--stone)}
   .page-hero p{max-width:580px;margin:0 auto;color:var(--muted);font-size:0.95rem;line-height:1.9}
-  .manifeste{max-width:760px;margin:3.5rem auto 0;padding:0 2rem}
-  .manifeste-inner{border-left:3px solid var(--sand);padding-left:2rem}
-  .manifeste p{color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:0.9rem}
-  .manifeste p strong{color:var(--charcoal);font-weight:500}
-  .selection{background:var(--cream);border:1px solid rgba(212,191,160,0.4);max-width:760px;margin:2.5rem auto 0;padding:2.4rem 3rem}
-  .selection h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--charcoal);margin-bottom:1.2rem}
-  .criteria{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem 2rem}
+
+  /* SECTION COLLECTIF */
+  .section{max-width:860px;margin:0 auto;padding:4rem 2rem}
+  .section h2{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--charcoal);margin-bottom:1.2rem;line-height:1.3}
+  .section h2 em{font-style:italic;color:var(--stone)}
+  .section p{color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:0.9rem}
+  .section p strong{color:var(--charcoal);font-weight:500}
+
+  .manifeste-inner{border-left:3px solid var(--sand);padding-left:2rem;margin-bottom:2rem}
+
+  /* CRITÈRES */
+  .criteria{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem 2rem;margin:1.5rem 0}
   .criterion{display:flex;gap:0.7rem;align-items:flex-start;font-size:0.85rem;color:var(--muted);line-height:1.6}
   .criterion-dot{width:5px;height:5px;border-radius:50%;background:var(--sand);flex-shrink:0;margin-top:0.55rem}
-  .experts-section{padding:3.5rem 2rem 2rem;max-width:1060px;margin:0 auto}
-  .experts-section > p{text-align:center;color:var(--muted);font-size:0.88rem;font-style:italic;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto}
-  .experts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.8rem}
+  .criteria-note{font-size:0.85rem;color:var(--muted);font-style:italic;border-top:1px solid rgba(212,191,160,0.3);padding-top:1rem;margin-top:0.5rem}
+
+  /* EXPERTS GRID */
+  .experts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;margin:2rem 0}
   .expert-card{background:var(--cream);border:1px solid rgba(212,191,160,0.4);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s}
   .expert-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(58,48,40,0.07)}
-  .expert-photo{width:100%;height:190px;background:var(--sand-lt);display:flex;align-items:center;justify-content:center}
+  .expert-photo{width:100%;height:160px;background:var(--sand-lt);display:flex;align-items:center;justify-content:center}
   .expert-photo span{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);text-align:center}
-  .expert-info{padding:1.6rem 1.8rem}
+  .expert-info{padding:1.4rem 1.6rem}
   .expert-domain{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);margin-bottom:0.3rem}
-  .expert-name{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;color:var(--charcoal);margin-bottom:0.25rem}
-  .expert-rating{font-size:0.78rem;color:var(--sand);letter-spacing:0.05em;margin-bottom:0.9rem}
-  .expert-bio{font-size:0.85rem;color:var(--muted);line-height:1.8}
-  .expert-tag{display:inline-block;margin-top:0.9rem;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);border:1px solid rgba(212,191,160,0.5);padding:0.2rem 0.7rem;border-radius:10px}
-  .cta-block{text-align:center;padding:4rem 2rem 5rem;background:var(--sand-lt);margin-top:3rem}
+  .expert-name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--charcoal);margin-bottom:0.2rem}
+  .expert-rating{font-size:0.78rem;color:var(--sand);letter-spacing:0.05em;margin-bottom:0.8rem}
+  .expert-bio{font-size:0.83rem;color:var(--muted);line-height:1.75}
+  .expert-tag{display:inline-block;margin-top:0.8rem;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);border:1px solid rgba(212,191,160,0.5);padding:0.2rem 0.7rem;border-radius:10px}
+
+  /* COMMENT ÇA MARCHE */
+  .how-section{background:var(--cream);padding:4rem 2rem}
+  .how-inner{max-width:860px;margin:0 auto}
+  .how-inner h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--charcoal);margin-bottom:0.5rem}
+  .how-inner h2 em{font-style:italic;color:var(--stone)}
+  .how-inner .intro{color:var(--muted);font-size:0.95rem;line-height:1.9;margin-bottom:2.5rem}
+
+  /* Process steps */
+  .process-steps{display:flex;flex-direction:column;gap:0;margin-bottom:3rem}
+  .process-step{display:flex;gap:1.5rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid rgba(212,191,160,0.25)}
+  .process-step:last-child{border-bottom:none}
+  .step-num{width:40px;height:40px;border-radius:50%;background:var(--charcoal);color:var(--warm-white);font-family:'Cormorant Garamond',serif;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.1rem}
+  .step-content h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem}
+  .step-content p{font-size:0.88rem;color:var(--muted);line-height:1.8}
+
+  /* Expert details cards */
+  .expert-details{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem}
+  .detail-card{background:var(--warm-white);border:1px solid rgba(212,191,160,0.4);padding:1.5rem}
+  .detail-card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem}
+  .detail-card p,.detail-card li{font-size:0.85rem;color:var(--muted);line-height:1.8;margin-bottom:0.3rem}
+  .detail-card ul{list-style:none;padding:0}
+  .detail-card li::before{content:"→ ";color:var(--stone)}
+  .detail-card a{color:var(--stone);text-decoration:none;border-bottom:1px dotted var(--sand)}
+  .detail-card a:hover{color:var(--charcoal)}
+  .tag-free{display:inline-block;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--sand-lt);color:var(--stone);padding:0.15rem 0.6rem;border-radius:10px;margin-left:0.4rem}
+  .tag-cpf{display:inline-block;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;background:#EAF3EA;color:#2D6A4F;padding:0.15rem 0.6rem;border-radius:10px;margin-left:0.4rem}
+
+  /* Saviez-vous CPF */
+  .cpf-box{background:var(--charcoal);color:var(--warm-white);padding:2rem 2.5rem;margin-bottom:2.5rem}
+  .cpf-box h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--sand);margin-bottom:1rem}
+  .cpf-box p{font-size:0.88rem;color:rgba(253,250,246,0.85);line-height:1.85;margin-bottom:0.6rem}
+  .cpf-box a{color:var(--sand);text-decoration:none;border-bottom:1px dotted rgba(212,191,160,0.5)}
+  .cpf-box strong{color:var(--warm-white)}
+
+  /* CTA */
+  .cta-block{text-align:center;padding:4rem 2rem 5rem;background:var(--sand-lt)}
   .cta-block h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;color:var(--charcoal);margin-bottom:0.8rem}
   .cta-block h2 em{font-style:italic;color:var(--stone)}
   .cta-block p{color:var(--muted);max-width:500px;margin:0 auto 2rem;font-size:0.92rem;line-height:1.85}
   .cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
   footer{padding:2.5rem 3rem;border-top:1px solid rgba(212,191,160,0.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
   .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted)}
   .footer-link{font-size:0.72rem;color:var(--muted);text-decoration:none}
-  @media(max-width:768px){nav{padding:1rem 1.4rem}.criteria{grid-template-columns:1fr}.selection{padding:1.8rem}footer{flex-direction:column;text-align:center}.cta-buttons{flex-direction:column;align-items:center}}
+
+  @media(max-width:768px){
+    nav{padding:1rem 1.4rem}
+    .criteria{grid-template-columns:1fr}
+    .expert-details{grid-template-columns:1fr}
+    .cta-buttons{flex-direction:column;align-items:center}
+    .cpf-box{padding:1.5rem}
+    footer{flex-direction:column;text-align:center}
+  }
 </style>
 </head>
 <body>
 <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
-  <button class="drawer-close" onclick="closeDrawer()">✕</button>
-  <a href="index.html">Accueil</a>
-  <a href="vous-reconnaissez-vous.html">Vous reconnaissez-vous ?</a>
-  <a href="manifeste.html">Notre conviction</a>
-  <a href="qui-sommes-nous.html">Qui sommes-nous</a>
-  <a href="nos-experts.html">Nos experts</a>
-  <a href="nos-valeurs.html">Nos valeurs</a>
-  <a href="avis-clients.html">Avis clients</a>
-  <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit" target="_blank" class="drawer-cta">Conseil gratuit</a>
-</div>
+  <button class="drawer-close" onclick="closeDrawer()">✕<\/button>
+  <a href="index.html">Accueil<\/a>
+  <a href="vous-reconnaissez-vous.html">Vous reconnaissez-vous ?<\/a>
+  <a href="manifeste.html">Notre conviction<\/a>
+  <a href="comment-ca-marche.html">Comment ça marche<\/a>
+  <a href="nos-experts.html">Nos experts<\/a>
+  <a href="avis-clients.html">Avis clients<\/a>
+  <a href="qui-sommes-nous.html">Qui sommes-nous<\/a>
+  <a href="https:\/\/cal.eu\/leilanibrunel\/30min-conseil-gratuit" target="_blank" class="drawer-cta">Conseil gratuit<\/a>
+<\/div>
 <nav>
   <a href="index.html" class="nav-logo">Changer<span>de</span>Vie</a>
   <div class="nav-right">
@@ -100,34 +152,34 @@
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
     <span class="eyebrow">Le collectif</span>
-    <h1>Des experts que nous connaissons<br><em>personnellement</em></h1>
-    <p>Voici un aperçu de quelques-uns des experts que nous pourrions vous conseiller. Ce ne sont pas des profils recrutés sur une plateforme — ce sont des personnes que nous connaissons, dont nous avons vu le travail, et en qui nous avons confiance.</p>
+    <h1>Nos experts &amp; <em>comment ça marche</em></h1>
+    <p>Des personnes que nous connaissons personnellement — et un processus pensé pour vous.</p>
   </div>
 </section>
 
-<div class="manifeste">
-  <div class="manifeste-inner">
-    <p><strong>Le collectif ChangerDeVie n'est pas un annuaire d'experts.</strong> C'est un groupe restreint de professionnels qui partagent les mêmes valeurs et qui travaillent ensemble, de façon coordonnée, pour vous accompagner.</p>
-    <p>Si votre parcours vous amène d'un bilan de compétences vers un conseiller financier, les deux experts peuvent — avec votre accord — échanger pour vous aider dans vos stratégies. Vous ne repartez pas de zéro, vous êtes entouré(e), personnellement. <strong>Votre confidentialité est respectée à chaque étape.</strong></p>
-    <p>Nos experts sont également sensibilisés à reconnaître les signes d'épuisement professionnel. Lorsque cela est nécessaire, ils s'engagent à orienter vers un professionnel médical — c'est inscrit dans notre charte éthique.</p>
-  </div>
-</div>
+<!-- SECTION 1 : LE COLLECTIF -->
+<div class="section">
+  <h2>Des experts que nous connaissons<br><em>personnellement</em></h2>
 
-<div class="selection">
-  <h3>Comment nous les sélectionnons — et ce que nous ne regardons pas</h3>
+  <div class="manifeste-inner">
+    <p><strong>Le collectif ChangerDeVie n'est pas un annuaire.</strong> C'est un groupe restreint de professionnels qui partagent les mêmes valeurs et travaillent ensemble, de façon coordonnée, pour vous accompagner.</p>
+    <p>Si votre parcours vous amène d'un bilan de compétences vers un conseiller financier, les deux experts peuvent — avec votre accord — échanger pour vous aider dans vos stratégies. Vous ne repartez pas de zéro, vous êtes entouré(e), personnellement. <strong>Votre confidentialité est respectée à chaque étape.</strong></p>
+    <p>Nos experts sont sensibilisés à reconnaître les signes d'épuisement. Lorsque nécessaire, ils s'engagent à orienter vers un professionnel médical — c'est inscrit dans notre charte éthique.</p>
+  </div>
+
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--charcoal);margin-bottom:1rem">Comment nous les sélectionnons — et ce que nous ne regardons pas</h3>
   <div class="criteria">
     <div class="criterion"><div class="criterion-dot"></div>Nous les connaissons personnellement — pas via une plateforme</div>
-    <div class="criterion"><div class="criterion-dot"></div>Au moins 90% de leurs clients les recommanderaient à un ami avec une note ≥ 8/10</div>
+    <div class="criterion"><div class="criterion-dot"></div>Au moins 90% de leurs clients les recommanderaient ≥ 8/10</div>
     <div class="criterion"><div class="criterion-dot"></div>Retours clients qualitatifs élogieux, vérifiés</div>
     <div class="criterion"><div class="criterion-dot"></div>L'intérêt du client avant le leur — toujours</div>
-    <div class="criterion"><div class="criterion-dot"></div>Sensibilisés aux signes de burn-out, engagement d'orientation médicale si nécessaire</div>
-    <div class="criterion"><div class="criterion-dot"></div>Signature de la charte éthique du collectif (inclus RGPD)</div>
+    <div class="criterion"><div class="criterion-dot"></div>Sensibilisés aux signes de burn-out, orientation médicale si nécessaire</div>
+    <div class="criterion"><div class="criterion-dot"></div>Signature de la charte éthique (inclus RGPD)</div>
   </div>
-  <p style="margin-top:1.5rem;font-size:0.85rem;color:var(--muted);font-style:italic;border-top:1px solid rgba(212,191,160,0.3);padding-top:1rem">Nous ne choisissons pas nos experts sur le nombre de followers, les titres ou les posts LinkedIn. Nous pensons que la qualité d'un accompagnement ne se mesure pas au volume sonore. Beaucoup d'experts excellents n'aiment pas se vendre — ils sont sous les radars, peu visibles. C'est précisément pour cela que nous les dénichons pour vous.</p>
-</div>
+  <p class="criteria-note">Nous ne choisissons pas nos experts sur leurs followers, leurs titres ou leurs posts LinkedIn. Beaucoup d'experts excellents n'aiment pas se vendre — ils sont sous les radars. C'est précisément pour cela que nous les dénichons pour vous.</p>
 
-<section class="experts-section">
-  <p>Un aperçu des experts que nous pourrions vous conseiller — selon votre situation, votre personnalité et votre besoin du moment.</p>
+  <!-- Aperçu experts -->
+  <p style="text-align:center;color:var(--muted);font-size:0.88rem;font-style:italic;margin:2rem 0 1.5rem">Un aperçu des experts que nous pourrions vous conseiller — selon votre situation et votre besoin du moment.</p>
   <div class="experts-grid">
     <div class="expert-card">
       <div class="expert-photo"><span>Photo à venir</span></div>
@@ -135,7 +187,7 @@
         <p class="expert-domain">Psychologie · Burn-out</p>
         <h3 class="expert-name">Claire</h3>
         <p class="expert-rating">★★★★★ &nbsp;4.9/5</p>
-        <p class="expert-bio">Psychologue clinicienne spécialisée dans l'épuisement professionnel et les transitions de vie. Son approche intégrative permet de mettre des mots sur ce qu'on n'arrive plus à formuler seul.</p>
+        <p class="expert-bio">Psychologue clinicienne spécialisée dans l'épuisement professionnel. Son approche intégrative permet de mettre des mots sur ce qu'on n'arrive plus à formuler seul.</p>
         <span class="expert-tag">Bien-être & Souffle</span>
       </div>
     </div>
@@ -145,7 +197,7 @@
         <p class="expert-domain">Bilan de compétences</p>
         <h3 class="expert-name">Nathalie</h3>
         <p class="expert-rating">★★★★★ &nbsp;4.8/5</p>
-        <p class="expert-bio">Consultante en bilan de compétences certifiée Qualiopi, 100% distanciel. Elle crée un espace de réflexion où la personne se retrouve vraiment. Ses bénéficiaires décrivent systématiquement un déclic qu'ils n'attendaient plus.</p>
+        <p class="expert-bio">Consultante en bilan de compétences certifiée Qualiopi, 100% distanciel. Ses bénéficiaires décrivent systématiquement un déclic qu'ils n'attendaient plus.</p>
         <span class="expert-tag">Bilan de compétences</span>
       </div>
     </div>
@@ -155,7 +207,7 @@
         <p class="expert-domain">Gestion de patrimoine</p>
         <h3 class="expert-name">Antoine</h3>
         <p class="expert-rating">★★★★★ &nbsp;4.7/5</p>
-        <p class="expert-bio">Conseiller en gestion de patrimoine indépendant, spécialisé dans les transitions professionnelles. Sa pédagogie démystifie la finance et révèle des leviers souvent méconnus.</p>
+        <p class="expert-bio">Conseiller en gestion de patrimoine indépendant, spécialisé dans les transitions professionnelles. Sa pédagogie révèle des leviers souvent méconnus.</p>
         <span class="expert-tag">Stratégie financière</span>
       </div>
     </div>
@@ -165,20 +217,138 @@
         <p class="expert-domain">Sophrologie · Bien-être</p>
         <h3 class="expert-name">Élodie</h3>
         <p class="expert-rating">★★★★★ &nbsp;4.9/5</p>
-        <p class="expert-bio">Sophrologue et praticienne en kinésiologie. Elle accompagne les personnes en période d'épuisement à retrouver leur ancrage corporel — condition souvent sous-estimée avant toute réflexion de fond.</p>
+        <p class="expert-bio">Sophrologue et praticienne en kinésiologie. Elle aide à retrouver l'ancrage corporel — condition souvent sous-estimée avant toute réflexion de fond.</p>
         <span class="expert-tag">Bien-être & Souffle</span>
       </div>
     </div>
   </div>
-</section>
+</div>
 
+<!-- SECTION 2 : COMMENT ÇA MARCHE -->
+<div class="how-section">
+  <div class="how-inner">
+    <span class="eyebrow">Le processus</span>
+    <h2>Comment ça <em>marche concrètement</em> ?</h2>
+    <p class="intro">De votre premier contact à l'accompagnement, voici comment nous travaillons — et ce que vous pouvez attendre à chaque étape.</p>
+
+    <!-- Les 4 étapes du process -->
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>L'appel gratuit de 30 minutes</h3>
+          <p>Vous réservez un créneau. Vous partagez librement où vous en êtes — sans agenda, sans jugement. Nous écoutons vraiment. Vous repartez avec une action concrète, gratuite, définie ensemble. Si cela fait sens, nous vous orientons vers l'expert dont le profil correspond à votre situation.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>La mise en relation personnalisée</h3>
+          <p>Nous vous présentons l'expert sélectionné pour vous — pas n'importe qui, la bonne personne au bon moment. Vous avez un premier rendez-vous gratuit avec cet expert pour valider l'adéquation avant tout engagement.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>L'accompagnement, à votre rythme</h3>
+          <p>Chaque parcours est différent. Certains commencent par reprendre leur souffle, d'autres démarrent directement un bilan. La durée, le rythme et les modalités sont adaptés à votre situation et à l'expert choisi.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Le suivi collectif</h3>
+          <p>Si votre parcours évolue vers un autre expert du collectif, un brief est organisé entre les deux professionnels — avec votre accord — pour assurer la continuité. Vous ne repartez jamais de zéro.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Détail par type d'expert -->
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--charcoal);margin-bottom:1.5rem">Ce que ça implique concrètement <em style="color:var(--stone)">selon votre besoin</em></h3>
+
+    <div class="expert-details">
+      <div class="detail-card">
+        <h3>🎯 Bilan de compétences <span class="tag-cpf">CPF</span></h3>
+        <ul>
+          <li>1er rendez-vous gratuit pour rencontrer le conseiller</li>
+          <li>2 à 4 mois de travail en profondeur</li>
+          <li>5 à 8 séances individuelles de 2h</li>
+          <li>Entre 1 500 € et 2 500 € selon le consultant</li>
+          <li>Finançable par le CPF jusqu'à 1 600 € — reste à charge ~150 €</li>
+          <li>Consultants Qualiopi : reste à charge souvent remboursable</li>
+        </ul>
+      </div>
+
+      <div class="detail-card">
+        <h3>💰 Conseiller en gestion de patrimoine <span class="tag-free">Gratuit</span></h3>
+        <ul>
+          <li>Rendez-vous gratuits pour définir objectifs et situation</li>
+          <li>Il se rémunère sur un % des placements réalisés</li>
+          <li>Il vous aide à faire fructifier votre capital</li>
+          <li>Idéal pour sécuriser une transition (quitter un CDI, créer)</li>
+        </ul>
+      </div>
+
+      <div class="detail-card">
+        <h3>🧘 Pratiques bien-être</h3>
+        <ul>
+          <li>Sophrologie, shiatsu, yoga, hypnose, kinésiologie…</li>
+          <li>Généralement autour de 60 €/séance</li>
+          <li>De nombreuses mutuelles remboursent ces séances — renseignez-vous !</li>
+          <li>Peuvent se faire en parallèle d'un suivi médical ou d'un bilan</li>
+        </ul>
+      </div>
+
+      <div class="detail-card">
+        <h3>🧭 CEP — Conseil en Évolution Professionnelle <span class="tag-free">100% gratuit</span></h3>
+        <ul>
+          <li>Service public d'accompagnement professionnel</li>
+          <li>Aide à construire un projet de reconversion ou formation</li>
+          <li>Accessible à tous les actifs</li>
+          <li><a href="https://www.mon-cep.org" target="_blank">Trouver son conseiller CEP →</a></li>
+        </ul>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 VAE & Outplacement</h3>
+        <ul>
+          <li>Rdv individuels réguliers sur plusieurs mois</li>
+          <li>Tarifs variables selon votre profil et situation</li>
+          <li>Souvent finançables par votre entreprise</li>
+          <li>Contactez-nous pour en discuter selon votre cas</li>
+        </ul>
+      </div>
+
+      <div class="detail-card">
+        <h3>🌱 Coaching ciblé</h3>
+        <ul>
+          <li>Prise de parole, leadership, confiance en soi</li>
+          <li>Format et tarifs selon le coach et l'objectif</li>
+          <li>Nous vous orientons vers le bon profil pour vous</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CPF Saviez-vous -->
+    <div class="cpf-box">
+      <h3>💡 Le saviez-vous ? Votre CPF vous appartient — utilisez-le !</h3>
+      <p>Le Compte Personnel de Formation est crédité <strong>automatiquement de 500 €/an</strong> tout au long de votre carrière. Son plafond est de <strong>5 000 €</strong>. Et une fois ce plafond atteint, votre compte n'est plus alimenté tant que vous ne l'avez pas utilisé.</p>
+      <p>Le bilan de compétences est finançable par le CPF jusqu'à <strong>1 600 €</strong> (depuis la loi de finances 2026), avec un reste à charge de ~150 € — souvent remboursable si le consultant est certifié Qualiopi.</p>
+      <p>En France, vous êtes l'un des rares pays au monde à bénéficier d'un tel droit à la formation. <strong>C'est votre droit. Profitez-en.</strong></p>
+      <p style="margin-top:1rem"><a href="https://www.moncompteformation.gouv.fr" target="_blank">→ Vérifier mon solde CPF sur Mon Compte Formation</a></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
 <section class="cta-block">
   <span class="eyebrow">La bonne personne pour vous</span>
-  <h2>Laissez-nous vous <em>conseiller</em>.</h2>
-  <p>Ces profils ne sont qu'un aperçu. Ce qui compte, c'est de trouver l'expert dont l'approche et la personnalité correspondent à votre situation — pas à quelqu'un d'autre.</p>
+  <h2>Laissez-nous vous <em>orienter</em>.</h2>
+  <p>En 30 minutes, on comprend votre situation et on identifie ensemble quelle expertise peut vous aider — et comment la financer.</p>
   <div class="cta-buttons">
     <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit" target="_blank" class="btn-primary">Réserver mon conseil gratuit</a>
-    <a href="nos-valeurs.html" class="btn-secondary">Comprendre nos valeurs</a>
+    <a href="nos-valeurs.html" class="btn-secondary">Nos valeurs</a>
   </div>
 </section>
 
