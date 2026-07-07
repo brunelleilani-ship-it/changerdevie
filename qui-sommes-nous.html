@@ -35,7 +35,6 @@
   .btn-secondary{display:inline-block;padding:0.85rem 2rem;border:1px solid var(--sand);color:var(--charcoal);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all 0.25s}
   .btn-secondary:hover{background:var(--sand-lt)}
 
-  /* HERO avec photo sunset */
   .hero-portrait{position:relative;height:85vh;min-height:500px;overflow:hidden}
   .hero-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
   .hero-portrait-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(58,48,40,0.1) 0%,rgba(58,48,40,0.05) 40%,rgba(253,250,246,1) 100%)}
@@ -44,35 +43,33 @@
   .hero-portrait-text h1 em{font-style:italic;color:var(--stone)}
   .hero-portrait-text p{color:var(--muted);font-size:0.95rem;margin-top:0.6rem}
 
-  /* CONTENU NARRATIF */
   .narrative{max-width:740px;margin:0 auto;padding:4rem 2rem}
 
-  .intro-quote{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:var(--charcoal);line-height:1.7;margin-bottom:3.5rem;border-left:3px solid var(--sand);padding-left:1.8rem}
+  .intro-quote{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:var(--charcoal);line-height:1.7;border-left:3px solid var(--sand);padding-left:1.8rem}
   .intro-quote em{font-style:italic;color:var(--stone)}
 
-  /* Chapitre = image + texte côte à côte ou empilés */
+  /* Portrait pro + intro : grid desktop */
+  .intro-grid{display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;margin-bottom:3.5rem}
+  .intro-portrait{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top}
+
   .chapter{margin-bottom:4rem}
-  .chapter-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);margin-bottom:0.5rem}
+  .chapter-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);margin-bottom:0.5rem;display:block}
   .chapter h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--charcoal);margin-bottom:1.2rem;line-height:1.3}
   .chapter h2 em{font-style:italic;color:var(--stone)}
   .chapter p{color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:0.9rem}
   .chapter p strong{color:var(--charcoal);font-weight:500}
-  .chapter p em{font-style:italic;color:var(--charcoal)}
 
-  /* Layout image + texte */
+  /* chapter-split : texte à gauche, image à droite par défaut */
   .chapter-split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;margin-bottom:4rem}
-  .chapter-split.reverse{direction:rtl}
-  .chapter-split.reverse > *{direction:ltr}
-  .chapter-img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top}
-  .chapter-img.landscape{aspect-ratio:4/3;object-position:center center}
-  .chapter-img.square{aspect-ratio:1;object-position:center top}
+  /* image à gauche : utiliser order sur mobile pour garder texte en premier */
+  .chapter-split .ch-img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top}
+  .chapter-split .ch-img-left{order:0}   /* image colonne gauche desktop */
+  .chapter-split .ch-text-right{order:1} /* texte colonne droite desktop */
 
-  /* Image pleine largeur */
   .chapter-full{margin:0 -2rem 4rem;max-width:none}
-  .chapter-full img{width:100%;height:360px;object-fit:cover;object-position:center 30%}
+  .chapter-full img{width:100%;height:360px;object-fit:cover;object-position:center 35%}
   .chapter-full .caption{font-size:0.75rem;color:var(--stone);font-style:italic;text-align:center;padding:0.6rem 2rem 0}
 
-  /* Grille 3 photos */
   .photo-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin:2rem 0 1rem}
   .photo-trio img{width:100%;aspect-ratio:4/3;object-fit:cover}
 
@@ -92,10 +89,25 @@
 
   @media(max-width:768px){
     nav{padding:1rem 1.4rem}
-    .chapter-split{grid-template-columns:1fr}
-    .chapter-split.reverse{direction:ltr}
-    .photo-trio{grid-template-columns:1fr 1fr}
     .hero-portrait{height:65vh}
+
+    /* Portrait pro : colonne → bloc empilé, image en haut puis texte */
+    .intro-grid{grid-template-columns:1fr;gap:1.2rem}
+    .intro-portrait{max-width:160px;margin:0 auto;display:block}
+
+    /* chapter-split → 1 colonne, texte toujours AVANT l'image */
+    .chapter-split{grid-template-columns:1fr;gap:1.2rem}
+    /* Ch1 : texte gauche/image droite en desktop → mobile : texte order:1, img order:2 */
+    .ch1-text{order:1}
+    .ch1-img{order:2}
+    /* Ch2 : image gauche/texte droite en desktop → mobile : texte order:1, img order:2 */
+    .ch2-text{order:1}
+    .ch2-img{order:2}
+    /* Ch5 : image gauche/texte droite en desktop → mobile : texte order:1, img order:2 */
+    .ch5-text{order:1}
+    .ch5-img{order:2}
+
+    .photo-trio{grid-template-columns:1fr 1fr}
     footer{flex-direction:column;text-align:center}
     .cta-buttons{flex-direction:column;align-items:center}
   }
@@ -122,7 +134,7 @@
   </div>
 </nav>
 
-<!-- HERO — photo sunset aujourd'hui -->
+<!-- HERO -->
 <section class="hero-portrait">
   <img src="photo_aujourdhui.jpg" alt="Leilani Brunel">
   <div class="hero-portrait-overlay"></div>
@@ -135,31 +147,32 @@
 
 <div class="narrative">
 
-  <div style="display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:start;margin-bottom:3.5rem">
-    <img src="photo_portrait_pro.jpg" alt="Leilani Brunel" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top">
-    <p class="intro-quote" style="margin-bottom:0">J'ai créé Changer-de-vie.fr car j'ai moi-même vécu le flou et la souffrance intérieure, incomprise, d'une transition non accompagnée. Je ne souhaite à personne de faire ce voyage seul — car bien entouré, définir un nouveau tournant peut être <em>une aventure plaisante et joyeuse.</em></p>
+  <!-- INTRO : portrait pro + citation -->
+  <div class="intro-grid">
+    <img src="photo_portrait_pro.jpg" alt="Leilani Brunel" class="intro-portrait">
+    <p class="intro-quote">J'ai créé Changer-de-vie.fr car j'ai moi-même vécu le flou et la souffrance intérieure, incomprise, d'une transition non accompagnée. Je ne souhaite à personne de faire ce voyage seul — car bien entouré, définir un nouveau tournant peut être <em>une aventure plaisante et joyeuse !</em></p>
   </div>
 
-  <!-- CHAPITRE 1 : Corporate -->
+  <!-- CHAPITRE 1 : texte gauche, image droite -->
   <div class="chapter-split">
-    <img src="photo_corporate.jpg" alt="Leilani en conférence" class="chapter-img">
-    <div>
+    <div class="ch1-text">
       <span class="chapter-label">Chapitre 1</span>
-      <h2>Toutes les cases cochées —<br><em>et pourtant.</em></h2>
-      <p>En 2018, j'obtiens mon diplôme d'ingénieur dans le top 10 de ma promotion. Je rejoins une multinationale, évolue en France et en expatriation, décroche mon CDI, achète mon appartement, enchaîne les promotions — classée dans le 1% des employés les plus performants.</p>
-      <p>Pourtant, malgré tous ces changements de postes, de pays, de salaire, <strong>une souffrance intérieure était toujours présente</strong>. Je performais. Mais je n'étais pas heureuse — parce que rationnellement, j'avais coché toutes les cases.</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--charcoal);margin-bottom:1.2rem;line-height:1.3">Toutes les cases cochées —<br><em style="color:var(--stone)">et pourtant.</em></h2>
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:0.9rem">En 2018, j'obtiens mon diplôme d'ingénieur dans le top 10 de ma promotion. Je rejoins une multinationale, évolue en France et en expatriation, décroche mon CDI, achète mon appartement, enchaîne les promotions — classée dans le 1% des employés les plus performants.</p>
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.95">Pourtant, malgré tous ces changements de postes, de pays, de salaire, <strong style="color:var(--charcoal)">une souffrance intérieure était toujours présente</strong>. Je performais, mais je n'étais pas heureuse.</p>
     </div>
+    <img src="photo_corporate.jpg" alt="Leilani en conférence" class="ch-img ch1-img" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top">
   </div>
 
-  <!-- CHAPITRE 2 : Détresse -->
-  <div class="chapter-split reverse">
-    <img src="photo_detresse.jpg" alt="Période de détresse" class="chapter-img">
-    <div>
+  <!-- CHAPITRE 2 : image gauche, texte droite -->
+  <div class="chapter-split">
+    <img src="photo_detresse.jpg" alt="Période de détresse" class="ch-img ch2-img" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top">
+    <div class="ch2-text">
       <span class="chapter-label">Chapitre 2</span>
-      <h2>L'incompréhension.<br><em>La culpabilité. L'implosion.</em></h2>
-      <p>Cette incompréhension, mêlée à de la culpabilité, créait un mélange explosif d'émotions. Pour trouver une explication rationnelle, je cherchais les responsables : les managers, les processus, le modèle économique…</p>
-      <p>Autour de moi, personne ne comprenait ce que je ressentais. <strong>Pas d'accompagnement.</strong> Alors, j'ai fini par imploser.</p>
-      <p>J'ai élaboré mon plan de sortie, ma stratégie financière, puis j'ai démissionné — avec la décision de repartir d'une feuille blanche. Une intuition renforcée par un plan rationnel.</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--charcoal);margin-bottom:1.2rem;line-height:1.3">L'incompréhension.<br><em style="color:var(--stone)">La culpabilité. L'implosion.</em></h2>
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:0.9rem">Cette incompréhension, mêlée à de la culpabilité, créait un mélange explosif d'émotions. Pour trouver une explication rationnelle, je cherchais les responsables : les managers, les processus, le modèle économique…</p>
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:0.9rem">Autour de moi, personne ne comprenait ce que je ressentais. <strong style="color:var(--charcoal)">Pas d'accompagnement.</strong> Alors, j'ai fini par imploser.</p>
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.95">J'ai élaboré mon plan de sortie, ma stratégie financière, puis j'ai démissionné — avec la décision de repartir d'une feuille blanche. Une intuition renforcée par un plan rationnel.</p>
     </div>
   </div>
 
@@ -168,26 +181,23 @@
     <span style="font-size:0.8rem;font-style:normal;color:var(--stone);letter-spacing:0.08em">— Mon mail d'au revoir à la multinationale</span>
   </div>
 
-  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:3rem">Je comprendrais plus tard que c'était ça — <strong>définir une vision</strong>. Et que c'était une étape essentielle du changement.</p>
+  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:3rem">Je comprendrais plus tard que c'était ça — <strong style="color:var(--charcoal)">définir une vision</strong>. Et que c'était une étape essentielle du changement.</p>
 
-  <!-- CHAPITRE 3 : Voyage/sabbatique -->
+  <!-- CHAPITRE 3 : Sabbatique -->
   <div class="chapter">
     <span class="chapter-label">Chapitre 3</span>
-    <h2>L'année sabbatique —<br><em>suivre uniquement son intuition.</em></h2>
+    <h2>L'année sabbatique —<br><em>dépasser ma peur de l'inconnu, de l'insécurité, et de l'instabilité.</em></h2>
   </div>
 
   <div class="chapter-full">
-    <img src="photo_voyage.jpg" alt="Trek sabbatique" style="width:100%;height:400px;object-fit:cover;object-position:center 35%">
-    <p class="caption">Australie, année sabbatique — apprendre à avancer sans plan défini.</p>
+    <img src="photo_voyage.jpg" alt="Trek sabbatique" style="width:100%;height:360px;object-fit:cover;object-position:center 35%">
+    <p class="caption">Australie, année sabbatique.</p>
   </div>
 
   <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:1rem">J'ai voyagé en suivant mon intuition et ce qui me plaisait. Je me suis éduquée sur les émotions, la quête de sens, le fonctionnement de l'humain. J'ai découvert et expérimenté la méditation, la sophrologie, le yoga — des outils qui m'ont aidée à gérer mes émotions, mes peurs et gagner énormément en clarté mentale.</p>
 
-  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:2rem">Sur mon chemin, j'ai été inspirée par de nombreuses personnes, histoires de vie, points de vue, cultures, expériences et œuvres littéraires. J'ai exploré et testé différents projets entrepreneuriaux — séjours kite, coaching en sports extrêmes pour public féminin… J'ai même fait <strong>la une d'un magazine de kitesurf</strong> dans ces péripéties !</p>
+  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:2rem">Sur mon chemin, j'ai été inspirée par de nombreuses personnes, histoires de vie, points de vue, cultures, expériences et œuvres littéraires. J'ai exploré et testé différents projets entrepreneuriaux — séjours kite, coaching en sports extrêmes pour public féminin… J'ai même fait <strong style="color:var(--charcoal)">la une d'un magazine de kitesurf</strong> dans ces péripéties !</p>
 
-  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:3rem">J'étais devenue l'entrepreneuse que j'avais visualisée. J'étais <strong>heureuse ET performante</strong>. Ma vie professionnelle était devenue fluide, plaisante et devenait financièrement stable grâce à des activités professionnelles totalement alignées à qui j'étais et mes valeurs !</p>
-
-  <!-- Sabbatique photos -->
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:3.5rem;align-items:start">
     <img src="photo_yoga.jpg" alt="Yoga en voyage" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top">
     <img src="photo_voile.jpg" alt="En mer" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top">
@@ -204,23 +214,25 @@
     <p>Depuis, je parcours régulièrement le monde pour mentorer et coacher des femmes sans CV — les aider à s'autodéterminer, grandir, atteindre leurs visions, développer leurs micro-entreprises.</p>
   </div>
 
-  <div class="photo-trio" style="margin-bottom:3.5rem">
+  <div class="photo-trio" style="margin-bottom:2rem">
     <img src="photo_rwtw_zanzibar.jpg" alt="RWTW Zanzibar formation" style="aspect-ratio:3/4;object-fit:cover;object-position:center top">
     <img src="photo_jambiani.jpg" alt="Jambiani Training Centre" style="aspect-ratio:3/4;object-fit:cover;object-position:center top">
     <img src="photo_rwtw_table.jpg" alt="Table ronde RWTW" style="aspect-ratio:3/4;object-fit:cover;object-position:center 30%">
   </div>
 
+  <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:3.5rem">J'étais devenue l'entrepreneuse que j'avais visualisée. J'étais <strong style="color:var(--charcoal)">heureuse ET performante</strong>. Ma vie professionnelle était devenue fluide, plaisante et devenait financièrement stable grâce à des activités professionnelles totalement alignées à qui j'étais et mes valeurs !</p>
+
   <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
 
-  <!-- CHAPITRE 5 : BC et aujourd'hui -->
+  <!-- CHAPITRE 5 : Aujourd'hui — image gauche, texte droite -->
   <div class="chapter-split" style="margin-top:2.5rem">
-    <img src="photo_speaker.jpg" alt="Leilani speaker" class="chapter-img">
-    <div>
+    <img src="photo_speaker.jpg" alt="Leilani speaker" class="ch-img ch5-img" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top">
+    <div class="ch5-text">
       <span class="chapter-label">Aujourd'hui</span>
-      <h2>ChangerDeVie —<br><em>et maintenant, aider les autres.</em></h2>
-      <p>Mes proches ont commencé à me demander conseil. Mais je ne me sentais pas équipée — ce qui avait marché pour moi n'allait pas forcément fonctionner pour d'autres. C'est ainsi que je me suis formée au Bilan de Compétences.</p>
-      <p>ChangerDeVie est né de ma passion pour aider d'autres personnes à sortir de ce flou, de ce brouillard mental, de ce mal-être incompris. <strong>En trouvant les outils et les experts qui conviennent vraiment</strong> à leur personnalité et au moment dans lequel ils se trouvent.</p>
-      <p>C'est la conviction qu'une personne qui a besoin de changement sera mieux accompagnée par une communauté d'experts qu'une seule personne ou des experts travaillant en silo.</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--charcoal);margin-bottom:1.2rem;line-height:1.3">ChangerDeVie —<br><em style="color:var(--stone)">et maintenant, aider les autres.</em></h2>
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:0.9rem">Mes proches ont commencé à me demander conseil. Mais je ne me sentais pas équipée — ce qui avait marché pour moi n'allait pas forcément fonctionner pour d'autres. C'est ainsi que je me suis formée au Bilan de Compétences.</p>
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.95;margin-bottom:0.9rem">Changer De Vie est né de mon obsession quant à la souffrance professionnelle et à ma passion pour aider d'autres personnes à sortir de ce flou, de ce brouillard mental, de ce mal-être incompris. Je pense que rassembler une communauté d'experts qui les écoutent vraiment, et qui peut leur apporter les bons outils, au bon moment, peut faire une vraie différence dans les changements de vie.</p>
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.95">Tous les jours, c'est cette compassion, et ce désir de soulager et trouver un chemin de sortie à cette souffrance professionnelle qui m'encourage à continuer d'avancer, sans relâche !</p>
     </div>
   </div>
 
