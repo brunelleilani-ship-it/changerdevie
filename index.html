@@ -129,6 +129,8 @@
     .detail-step-num { font-size: 3rem; }
     footer { flex-direction: column; text-align: center; }
   }
+  .btn-whatsapp{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;padding:0.9rem 1.8rem;background:#25D366;color:#fff;font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.25s;text-align:center;line-height:1.3}
+  .btn-whatsapp:hover{background:#1ebe57}
 </style>
 </head>
 <body>
@@ -340,6 +342,7 @@
   <h2>Pas sûr(e) de savoir<br><em>où vous en êtes</em> ?</h2>
   <p style="max-width:480px;margin:0.8rem auto 2.4rem;color:var(--muted);font-size:0.95rem;line-height:1.85">Vous avez une envie de changement que vous n'arrivez pas encore à formuler clairement. C'est le point de départ de cet appel.<br><br>En 30 minutes, vous partagez librement où vous en êtes. Vous repartez avec une action concrète, gratuite, définie ensemble, pour une première impulsion vers plus de clarté et de bien-être.<br><br>Si cela fait sens, nous vous orientons vers un expert qui pourrait vous aider.</p>
   <a href="https://cal.eu/leilanibrunel/30min-conseil-gratuit?layout=mobile&overlayCalendar=true" target="_blank" class="btn-primary">Réserver mon conseil gratuit</a>
+    <a href="https://wa.me/33762350978?text=Bonjour%20%21%20%C3%80%20ce%20jour%20ma%20situation%20est...%20Je%20me%20sens..." target="_blank" class="btn-whatsapp">💬 Chatter avec une conseillère <span style="font-size:0.65rem;opacity:0.8;display:block;margin-top:0.2rem">(humaine, pas IA)</span></a>
   <p class="cta-note">Sans engagement · Confidentiel · Avec notre conseillère formée</p>
 </section>
 
@@ -348,20 +351,15 @@
   <div class="alt-cta">
     <h3>Vous n'aimez pas le téléphone ?</h3>
     <p>Décrivez-nous votre situation. Nous vous répondons personnellement, à la main, sous 48h.<br><span style="font-size:0.82rem;font-style:italic;color:var(--stone)">Votre situation mérite une vraie attention — pas une réponse automatisée.</span></p>
-    <form action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" id="contactForm">
-      <div class="form-group"><label>Votre prénom *</label><input type="text" name="prenom" placeholder="Marie" required></div>
-      <div class="form-group"><label>Votre nom *</label><input type="text" name="nom" placeholder="Dupont" required></div>
-      <div class="form-group"><label>Votre email *</label><input type="email" name="email" placeholder="marie@exemple.com" required></div>
-      <div class="form-group"><label>Votre situation en quelques mots *</label><textarea name="situation" placeholder="Je travaille dans X depuis Y ans, et je ressens..." required></textarea></div>
+    <div class="form-group"><label>Votre prénom *</label><input type="text" id="wa_prenom" placeholder="Marie"></div>
+      <div class="form-group"><label>Votre situation en quelques mots *</label><textarea id="wa_situation" placeholder="Je travaille dans X depuis Y ans, et je ressens..."></textarea></div>
       <div class="form-group" style="display:flex;align-items:flex-start;gap:0.7rem;margin-top:0.5rem">
-        <input type="checkbox" name="rgpd" id="rgpd" required style="width:auto;margin-top:3px;flex-shrink:0">
-        <label for="rgpd" style="font-size:0.78rem;color:var(--muted);text-transform:none;letter-spacing:0;line-height:1.6;cursor:pointer">J'accepte que mes informations soient utilisées uniquement pour me répondre dans le cadre de cet échange. Elles ne seront pas partagées ni utilisées à d'autres fins. <a href="nos-valeurs.html" style="color:var(--stone)">En savoir plus →</a></label>
+        <input type="checkbox" id="rgpd" style="width:auto;margin-top:3px;flex-shrink:0">
+        <label for="rgpd" style="font-size:0.78rem;color:var(--muted);text-transform:none;letter-spacing:0;line-height:1.6;cursor:pointer">J'accepte que mes informations soient utilisées uniquement pour me répondre dans le cadre de cet échange. Elles ne seront pas partagées à des tiers.</label>
       </div>
-      <input type="hidden" name="_subject" value="Nouvelle demande — ChangerDeVie">
-      <input type="hidden" name="_replyto" value="contact@changer-de-vie.fr">
-      <button type="submit" class="btn-primary" style="width:100%;margin-top:1rem" id="submitBtn">Envoyer ma situation</button>
-      <p id="formSuccess" style="display:none;color:#2D6A4F;font-size:0.88rem;text-align:center;margin-top:1rem">✓ Message envoyé ! Nous vous répondons sous 48h.</p>
-    </form>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:0.8rem;font-style:italic">En cliquant, WhatsApp s'ouvrira avec votre message pré-rempli — il ne vous restera qu'à l'envoyer.</p>
+      <button onclick="sendToWhatsApp()" class="btn-whatsapp" style="width:100%;margin-top:1rem;font-size:0.82rem">💬 Envoyer ma situation sur WhatsApp</button>
+      <p style="font-size:0.72rem;color:var(--stone);text-align:center;margin-top:0.6rem">Une vraie conseillère vous répondra — pas un bot.</p>
   </div>
 </div>
 
@@ -389,33 +387,20 @@
     document.getElementById('hamburger').classList.remove('open');
   }
 
-  // Formspree form handling
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('submitBtn');
-      btn.textContent = 'Envoi en cours…';
-      btn.disabled = true;
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok) {
-          form.reset();
-          document.getElementById('formSuccess').style.display = 'block';
-          btn.style.display = 'none';
-        } else {
-          btn.textContent = 'Erreur — réessayez';
-          btn.disabled = false;
-        }
-      } catch(err) {
-        btn.textContent = 'Erreur — réessayez';
-        btn.disabled = false;
-      }
-    });
+  function sendToWhatsApp() {
+    const rgpd = document.getElementById('rgpd');
+    if (!rgpd.checked) {
+      alert("Merci de cocher la case pour accepter l'utilisation de vos données.");
+      return;
+    }
+    const prenom = document.getElementById('wa_prenom').value.trim();
+    const situation = document.getElementById('wa_situation').value.trim();
+    if (!situation) {
+      alert("Merci de décrire votre situation en quelques mots.");
+      return;
+    }
+    const msg = encodeURIComponent("Bonjour ! Je m'appelle " + (prenom || "…") + ".\nÀ ce jour ma situation est : " + situation + "\nJe me sens...");
+    window.open("https://wa.me/33762350978?text=" + msg, "_blank");
   }
 
   // accordion
